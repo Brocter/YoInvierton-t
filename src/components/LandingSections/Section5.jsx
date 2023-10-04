@@ -1,6 +1,4 @@
 import { NovedadesCard } from "../NovedadesCard/NovedadesCard"
-import { OportunidadesCard } from "../OportunidadesCard/OportunidadesCard"
-
 
 export const Section5 = () => {
     return(
