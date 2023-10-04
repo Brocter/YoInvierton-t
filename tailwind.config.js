@@ -10,7 +10,7 @@ export default {
       colors: {
         primaryBlue: "#4886F8",
         black : "#000",
-        primaryLightBlue: "#925FF0",
+        primaryLightBlue: "#D3E1FF",
         grey : "#646464",
         primaryWhite: "#FFFFFF",
         complementaryGreen: "#7BE879",

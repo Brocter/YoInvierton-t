@@ -44,10 +44,10 @@ const Carousel = ({ images }) => {
   };
 
   return (
-    <div className="m-auto flex relative justify-center items-center w-[100vw] h-[50vh] max-w-[40rem]">
+    <div className="mx-auto py-[clamp(11rem,30vw,16rem)] flex relative justify-center items-center w-[100vw] h-[50vh] max-w-[40rem]">
       <AnimatePresence initial={false} custom={direction}>
         <motion.img
-          className="absolute max-h-[22rem] cursor-grab"
+          className="absolute max-h-[22rem] cursor-grab md:rounded-2xl"
           key={page}
           src={images[imageIndex]}
           custom={direction}
@@ -79,11 +79,11 @@ const Carousel = ({ images }) => {
       <div className="top-[calc(50%-20px)] absolute left-3 bg-white rounded-full flex justify-center items-center w-12 h-12 cursor-pointer font-bold z-[2] text-[1.2rem]" onClick={() => paginate(-1)}>
         {"◄"}
       </div>
-      <div className="flex gap-5 justify-center mt-[13rem] z-10 py-4">
+      <div className="flex gap-5 justify-center items-center mt-[12rem] z-10 py-4">
         {images.map((_, index) => (
           <div
             key={index}
-            className={`w-2 cursor-pointer rounded-full h-2 bg-white ${imageIndex === index ? "bg-blue-400" : ""}`}
+            className={`w-2 cursor-pointer rounded-full p-1 h-2 bg-white hover:p-2 hover:duration-[400ms] ${imageIndex === index ?  "p-2 duration-[400ms]" : ""}`}
             onClick={() => handleDotClick(index)}
           ></div>
         ))}

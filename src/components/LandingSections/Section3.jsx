@@ -13,8 +13,8 @@ const images = [
 export const Section3 = () => {
     return(
         <section className='relative isolate py-8 after:content-[""] after:bg-primaryBlue after:absolute after:inset-[0] after:skew-y-[-5deg] after:z-[-1]'>
-        <div className='flex mt-4'>
-        <div className='content-[""] w-[42%]'></div>
+        <div className='flex mt-4 pb-[max(1rem,5vw)]'>
+        <div className='content-[""] w-[45%]'></div>
         <div className='rounded-l-full bg-white h-[5.25rem] object-cover skew-y-[-5deg] w-[58%]'>
           <img className="py-5 pl-4 skew-y-[5deg]" src={isologo} alt="isologo" />
         </div>
