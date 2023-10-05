@@ -1,6 +1,7 @@
 import { OportunidadesCard } from '../OportunidadesCard/OportunidadesCard';
 
 
+
 export const Section4 = () => {
     return(
         <section className='py-[6rem] mx-auto px-6 text-black'>

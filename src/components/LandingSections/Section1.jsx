@@ -2,6 +2,7 @@ import React from 'react';
 import whatsappIcon from './../../assets/icons/whatsapp.svg';
 import background from './../../assets/edificioBackground.png';
 
+
 export const Section1 = () => {
     return(
         <section className="font-barlow text-black py-[2rem]">

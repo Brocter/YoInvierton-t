@@ -1,5 +1,5 @@
 import isologo from "./../../assets/isotipo.png";
-import Carousel from "../Carousel/Carousel"
+import Carousel from "../CarouselRegazzoni/Carousel"
 
 const images = [
   "https://images.pexels.com/photos/169647/pexels-photo-169647.jpeg?auto=compress&cs=tinysrgb&w=600",
@@ -15,7 +15,7 @@ export const Section3 = () => {
         <section className='relative isolate py-8 after:content-[""] after:bg-primaryBlue after:absolute after:inset-[0] after:skew-y-[-5deg] after:z-[-1]'>
         <div className='flex mt-4 pb-[max(1rem,5vw)]'>
         <div className='content-[""] w-[45%]'></div>
-        <div className='rounded-l-full bg-white h-[5.25rem] object-cover skew-y-[-5deg] w-[58%]'>
+        <div className='rounded-l-full bg-white h-[5.25rem] object-cover content-[""] skew-y-[-5deg] w-[58%] isolate'>
           <img className="py-5 pl-4 skew-y-[5deg]" src={isologo} alt="isologo" />
         </div>
         </div>
