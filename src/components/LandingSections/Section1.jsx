@@ -1,7 +1,7 @@
 import React from 'react';
 import whatsappIcon from './../../assets/icons/whatsapp.svg';
 import background from './../../assets/edificioBackground.png';
-
+import { Link } from 'react-router-dom';
 
 export const Section1 = () => {
     return(
@@ -13,9 +13,11 @@ export const Section1 = () => {
               <h6 className='mt-5 text-[1.2rem] font-[500] leading-[1.25]'>
                 Sumate a los que invierten de la manera más segura y confiable: en <b className="text-primaryBlue">Propiedades</b>
               </h6>
+              
               <div className="flex mt-8 mb-6 gap-[5%]">
-                <button className='w-[47.5%] bg-primaryBlue text-primaryWhite  py-3 font-[500] rounded-md text-[1.2rem]'>Registrate</button>
-
+                <Link to={"/sesion"} className='w-[47.5%] bg-primaryBlue text-primaryWhite mx-auto py-3 font-[500] rounded-md text-[1.2rem]'>
+                  <button className='text-center w-[100%]'>Registrate</button>
+                </Link>
                 <button className='flex w-[47.5%] py-3 border-complementaryGreen border-2 justify-center items-center
                 rounded-md text-complementaryGreen font-[500] text-[1.2rem]'>
                   <img className="pr-1" src={whatsappIcon} alt="wppIcon" />Consultanos</button>
