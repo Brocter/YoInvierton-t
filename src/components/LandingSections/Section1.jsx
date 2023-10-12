@@ -15,7 +15,7 @@ export const Section1 = () => {
               </h6>
               
               <div className="flex mt-8 mb-6 gap-[5%]">
-                <Link to={"/sesion"} className='w-[47.5%] bg-primaryBlue text-primaryWhite mx-auto py-3 font-[500] rounded-md text-[1.2rem]'>
+                <Link to={"/registro"} className='w-[47.5%] bg-primaryBlue text-primaryWhite mx-auto py-3 font-[500] rounded-md text-[1.2rem]'>
                   <button className='text-center w-[100%]'>Registrate</button>
                 </Link>
                 <button className='flex w-[47.5%] py-3 border-complementaryGreen border-2 justify-center items-center
