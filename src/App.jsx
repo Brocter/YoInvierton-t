@@ -4,6 +4,7 @@ import Navbar from './components/Navbar/Navbar';
 import Landing from './views/Landing';
 import Register from './views/Register';
 import LogIn from './views/LogIn';
+import Home from './views/Home';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/registro" element={<Register />} />
         <Route path="/iniciar-sesion" element={<LogIn />} />
+        <Route path="/home" element={<Home />} />
       </Routes>
     </>
   );

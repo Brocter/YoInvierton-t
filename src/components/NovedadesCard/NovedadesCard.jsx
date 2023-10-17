@@ -1,7 +1,29 @@
 import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+
 
 export const NovedadesCard = (props) => {
 
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    async function fetchMediumPosts() {
+      try {
+        const response = await fetch('https://api.medium.com/v1/users/{your_user_id}/posts', {
+          headers: {
+            'Authorization': 'Bearer YOUR_ACCESS_TOKEN', // Replace with your access token
+          },
+        });
+        const data = await response.json();
+        setPosts(data.data); // Assuming data.data contains your posts
+      } catch (error) {
+        console.error('Error fetching Medium posts', error);
+      }
+    }
+    
+    fetchMediumPosts();
+  }, []);
+  
     // eslint-disable-next-line react/prop-types
     const { background, title, text, link } = props;
     return(
