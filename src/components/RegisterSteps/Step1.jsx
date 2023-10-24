@@ -7,15 +7,11 @@ import InputForm from "../InputForm";
 
 
 const Step1 = (props) => {
-    const [load, setLoad] = useState(false);
-
-    useEffect(() => {
-        setLoad(true)
-    },[])
-
+    
     const {handleInputChange, signInWithGoogle, onNext} = props;
     return(
-        <div className={`flex flex-col px-4 gap-4 py-4 mx-auto translate-x-[100%] duration-[600ms] ${load ? "translate-x-[0] transition-all " : ""}`}> <div className='flex justify-between items-center'>
+        <div className={`flex flex-col px-4 gap-4 py-4 mx-auto animate-slide-in`}>
+            <div className='flex justify-between items-center'>
             <h2 className='text-[2.5rem] font-extrabold'>Crear Cuenta</h2>
             <Link className="underline text-primaryBlue pt-4"to="/iniciar-sesion">Iniciar Sesión</Link>
             </div>

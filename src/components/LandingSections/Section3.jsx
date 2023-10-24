@@ -12,32 +12,32 @@ const images = [
 
 export const Section3 = () => {
     return(
-        <section className='relative isolate py-8 after:content-[""] after:bg-primaryBlue after:absolute after:inset-[0] after:skew-y-[-5deg] after:z-[-1]'>
+        <section className='relative isolate py-8 after:content-[""] after:bg-primaryBlue after:absolute after:inset-[0] after:skew-y-[-5deg] after:z-[-1] lg:after:skew-y-[-3deg]'>
         <div className='flex mt-4 pb-[max(1rem,5vw)]'>
-        <div className='content-[""] w-[45%]'></div>
-        <div className='rounded-l-full bg-white h-[5.25rem] object-cover content-[""] skew-y-[-5deg] w-[58%] isolate'>
-          <img className="py-5 pl-4 skew-y-[5deg]" src={isologo} alt="isologo" />
+        <div className='w-[45%] lg:w-[50%]'></div>
+        <div className='rounded-l-full bg-white h-[clamp(5.25rem,8vw,6rem)] skew-y-[-5deg] w-[58%] isolate lg:skew-y-[-3deg]'>
+          <img className="py-[clamp(1.25rem,2vw,1.6rem)] pl-4 skew-y-[5deg] lg:skew-y-[3deg]" src={isologo} alt="isologo" />
         </div>
         </div>
-        <div className='text-center text-white px-6 m-auto py-8 max-w-[25rem] '>
-          <h3 className='font-bold text-[1.7rem]'>ÚLTIMO PROYECTO</h3>
-          <h2 className='font-extrabold text-[2.4rem]'>Jardin Regazzoni</h2>
-          <p className='py-5 font-[500] text-[1.2rem]'>Edificio residencial de alta gama emplazado en el 
+        <div className='text-center text-white px-6 m-auto py-8 max-w-[42rem] '>
+          <h3 className='font-bold text-[clamp(1.7rem,3.5vw,3rem)]'>ÚLTIMO PROYECTO</h3>
+          <h2 className='font-extrabold text-[clamp(2.4rem,6vw,4rem)]'>Jardin Regazzoni</h2>
+          <p className='py-[clamp(1.25rem,3vw,2rem)] font-[400] text-[clamp(1.2rem,2.6vw,2rem)] tracking-[-0.02rem] leading-[1.4]'>Edificio residencial de <b>alta gama</b> emplazado en el 
             centro de Santiago del Estero</p>
         </div>
-        <div className='text-white px-8 mx-auto py-4 max-w-[25rem] '>
-          <div className='flex items-center justify-between pb-6'>
-            <h5 className='font-bold text-right text-[1.5rem]'>Rentabilidad<br />anual en dólares</h5>
-            <div className='rounded-full bg-white flex flex-col justify-center h-[5.25rem] w-[5.25rem] text-center'>
-              <h5 className='text-primaryBlue font-extrabold text-[2rem]'>8%</h5>
+        <div className='text-white px-8 mx-auto py-4 max-w-[68rem] flex justify-center gap-12'>
+          <div className="lg:flex items-center flex-row-reverse gap-8">
+            <div className='rounded-full bg-white flex flex-col justify-center h-[clamp(5.25rem,13vw,8.3rem)] w-[clamp(5.25rem,13vw,8.3rem)] text-center mx-auto'>
+              <h5 className='text-primaryBlue font-extrabold text-[clamp(2.5rem,5vw,4rem)]'>8%</h5>
             </div>
+            <h5 className='text-center font-bold text-[clamp(1rem,2.6vw,2rem)] mt-2 lg:text-right'>Rentabilidad<br />anual en dólares</h5>
           </div>
-          <div className='flex items-center justify-between'>
-             <div className='rounded-full bg-white flex flex-col justify-center h-[5.25rem] w-[5.25rem] text-center'>
-                <h5 className='text-primaryBlue font-extrabold text-[1.7rem]'>1300</h5>
-                <p className='text-primaryBlue font-[500] text-[1.2rem]'>USD</p>
+          <div className="lg:flex items-center gap-8">
+             <div className='rounded-full bg-white flex flex-col justify-center h-[clamp(5.25rem,13vw,8.3rem)] w-[clamp(5.25rem,13vw,8.3rem)] text-center mx-auto'>
+                <h5 className='text-primaryBlue font-bold text-[clamp(1.7rem,3.5vw,3rem)] mb-[-0.8rem]'>1300</h5>
+                <p className='text-primaryBlue font-[500] text-[clamp(1rem,2.6vw,2rem)]'>USD</p>
              </div>
-            <h5 className='font-bold text-left text-[1.5rem]'>Monto mínimo<br />de inversión</h5>
+            <h5 className='font-bold text-center text-[clamp(1.2rem,2.6vw,2rem)] mt-2 lg:text-left'>Monto mínimo<br />de inversión</h5>
           </div>
         </div>
         <Carousel images={images}/>
