@@ -22,7 +22,7 @@ export default function CarouselNovedades() {
   return (
     <motion.div ref={carousel} whileTap={{cursor:"grabbing"}} className='overflow-hidden'>
       <motion.div drag="x" dragConstraints={{ right: 0, left: -width }}>
-        <motion.div className='flex gap-4 w-full'>
+        <motion.div className='flex gap-4 w-full py-5 pl-4'>
           {[...Array(3)].map((_, index) => (
             <NovedadesCard key={index} {...cardData} />
           ))}

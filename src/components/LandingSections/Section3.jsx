@@ -19,13 +19,13 @@ export const Section3 = () => {
           <img className="py-[clamp(1.25rem,2vw,1.6rem)] pl-4 skew-y-[5deg] lg:skew-y-[3deg]" src={isologo} alt="isologo" />
         </div>
         </div>
-        <div className='text-center text-white px-6 m-auto py-8 max-w-[42rem] '>
+        <div className='text-center text-white px-4 m-auto py-6 max-w-[clamp(25rem,60vw,42rem)] '>
           <h3 className='font-bold text-[clamp(1.7rem,3.5vw,3rem)]'>ÚLTIMO PROYECTO</h3>
           <h2 className='font-extrabold text-[clamp(2.4rem,6vw,4rem)]'>Jardin Regazzoni</h2>
-          <p className='py-[clamp(1.25rem,3vw,2rem)] font-[400] text-[clamp(1.2rem,2.6vw,2rem)] tracking-[-0.02rem] leading-[1.4]'>Edificio residencial de <b>alta gama</b> emplazado en el 
+          <p className='py-[clamp(1.25rem,3vw,2rem)] font-[400] text-[clamp(1.1rem,3vw,2rem)] tracking-[-0.02rem] leading-[1.4]'>Edificio residencial de <b>alta gama</b> emplazado en el 
             centro de Santiago del Estero</p>
         </div>
-        <div className='text-white px-8 mx-auto py-4 max-w-[68rem] flex justify-center gap-12'>
+        <div className='text-white px-8 mx-auto py-[clamp(0.5rem,2vw,1rem)] max-w-[68rem] flex justify-center gap-12'>
           <div className="lg:flex items-center flex-row-reverse gap-8">
             <div className='rounded-full bg-white flex flex-col justify-center h-[clamp(5.25rem,13vw,8.3rem)] w-[clamp(5.25rem,13vw,8.3rem)] text-center mx-auto'>
               <h5 className='text-primaryBlue font-extrabold text-[clamp(2.5rem,5vw,4rem)]'>8%</h5>
@@ -34,10 +34,10 @@ export const Section3 = () => {
           </div>
           <div className="lg:flex items-center gap-8">
              <div className='rounded-full bg-white flex flex-col justify-center h-[clamp(5.25rem,13vw,8.3rem)] w-[clamp(5.25rem,13vw,8.3rem)] text-center mx-auto'>
-                <h5 className='text-primaryBlue font-bold text-[clamp(1.7rem,3.5vw,3rem)] mb-[-0.8rem]'>1300</h5>
-                <p className='text-primaryBlue font-[500] text-[clamp(1rem,2.6vw,2rem)]'>USD</p>
+                <h5 className='text-primaryBlue font-bold text-[clamp(1.7rem,3.8vw,3rem)] mb-[-0.8rem]'>1300</h5>
+                <p className='text-primaryBlue font-[500] text-[clamp(1rem,2.9vw,2rem)]'>USD</p>
              </div>
-            <h5 className='font-bold text-center text-[clamp(1.2rem,2.6vw,2rem)] mt-2 lg:text-left'>Monto mínimo<br />de inversión</h5>
+            <h5 className='font-bold text-center text-[clamp(1rem,2.6vw,2rem)] mt-2 lg:text-left'>Monto mínimo<br />de inversión</h5>
           </div>
         </div>
         <Carousel images={images}/>

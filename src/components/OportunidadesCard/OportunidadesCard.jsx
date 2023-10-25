@@ -1,14 +1,16 @@
-import background from './../../assets/edificioBackground.png';
 
-export const OportunidadesCard = () => {
+
+export const OportunidadesCard = (props) => {
+
+  const {departamento, background, porcentaje, rendimiento, minimoInversion, inversionMax, totalInvertido} = props;
     return(
-        <div className='border mt-4 border-primaryLightBlue rounded-b-xl rounded-tr-[1.9rem] shadow-lg shadow-primaryLightBlue max-w-[25rem]'>
+        <div className='border mt-4 border-primaryLightBlue rounded-b-xl rounded-tr-[1.9rem] shadow-lg shadow-primaryLightBlue max-w-[25rem] min-w-[21.3rem]'>
         <div className='px-4 py-3'>  
-        <h5 className='text-primaryBlue font-bold text-[1.2rem]'>Departamento 9°C</h5>
+        <h5 className='text-primaryBlue font-bold text-[1.2rem]'>{ departamento }</h5>
         <h6 className='text-[1rem] text-black'>Jardin Regazzoni</h6>
         </div>
-        <p className='bg-primaryBlue text-center text-white py-1 text-[0.84rem]'>Proyecto activo - Renta fija</p>
-        <img className="object-cover" src={background} alt="holis" />
+        <p className='bg-primaryBlue text-center text-white py-1 text-[0.84rem]'>Proyecto activo - Cobro sobre venta</p>
+        <img className="object-cover" src={background} alt="background" />
         <div className='px-4 mx-auto pb-8'>
           <div className='py-3'>
           <div className='flex justify-between items-center'>
@@ -21,7 +23,7 @@ export const OportunidadesCard = () => {
             </svg>
             <p className='text-[0.84rem] pl-1'>Rendimiento anual estimado:</p>
             </div>
-            <h6 className='text-primaryBlue font-bold'>8%</h6>
+            <h6 className='text-primaryBlue font-bold'>{rendimiento}</h6>
           </div>
           <div className='flex justify-between items-center'>
             <div className='flex items-center justify-center'>
@@ -32,18 +34,18 @@ export const OportunidadesCard = () => {
             </svg>
             <p className='text-[0.84rem] pl-1'>Mínimo de inversión</p>
             </div>
-            <h6 className='text-primaryBlue'>U$S 1.300,00</h6>
+            <h6 className='text-primaryBlue'>U$S {minimoInversion}</h6>
           </div>
           </div>
           <div className='pb-4'>
             <p className='font-bold text-primaryBlue text-[1rem] pb-2'>Capital fondeado</p>
           <div className='bg-primaryLightBlue rounded-full'>
-            <div className='bg-primaryBlue w-[15%] pt-3 rounded-full'>
+            <div className={`bg-primaryBlue w-[${porcentaje}] pt-3 rounded-full`}>
             </div>
           </div>
           <div className='flex justify-between text-[0.8rem] pt-1'>
-          <p>U$S 1000 / <b className='text-primaryBlue'>50.000</b></p>
-          <p>15% financiamiento alcanzado</p>
+          <p>U$S {totalInvertido} / <b className='text-primaryBlue'>{inversionMax}</b></p>
+          <p>{porcentaje} financiamiento alcanzado</p>
           </div>
           </div>
           <button className='bg-primaryBlue text-white w-full rounded-xl py-[0.6rem] text-[1rem]'>QUIERO INVERTIR</button>
@@ -51,3 +53,5 @@ export const OportunidadesCard = () => {
       </div>
     )
 }
+
+

@@ -5,11 +5,6 @@ import { Link } from 'react-router-dom';
 
 const Step2 = (props) => {
     const {handleInputChange, onNext, onPrev} = props;
-    const [load, setLoad] = useState(false);
-
-    useEffect(() => {
-        setLoad(true)
-    },[])
 
     return(
         <div className={`flex flex-col px-4 gap-4 py-4 mx-auto animate-slide-in`}> 
@@ -23,7 +18,7 @@ const Step2 = (props) => {
             </div>
             <InputForm type="number" title="DNI" name="DNI" onChange={handleInputChange} placeholder="11. 111 . 111"/>
             <button className="bg-primaryBlue rounded-xl py-3 justify-center text-white text-[1.2rem] font-medium" onClick={onNext}>SIGUIENTE</button>
-            <button className="bg-primaryLightBlue border-primaryBlue rounded-xl py-3 justify-center text-primaryBlue text-[1.2rem] font-medium" onClick={onPrev}>ATRÁS</button>
+            <button className="bg-primaryLightBlue border-primaryBlue border rounded-xl py-3 justify-center text-primaryBlue text-[1.2rem] font-medium" onClick={onPrev}>ATRÁS</button>
             
         </div>
     )

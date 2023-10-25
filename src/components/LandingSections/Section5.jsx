@@ -13,7 +13,7 @@ export const Section5 = () => {
         <h2 className='text-white text-[3rem] font-[600] leading-[1.2]  tracking-[-0.08rem]'>Enterate de las <b className="font-extrabold">novedades</b></h2>
         <h6 className='text-white font-[500] text-[1.5rem] leading-[1.2] py-6'>Sumate a nuestro <b className='underline'>blog</b> para no perderte de ningún avance</h6>
         </div>
-        <div className=" bg-primaryBlue pl-6">
+        <div className=" bg-primaryBlue">
         <CarouselNovedades/>
         </div>
         </div>

@@ -27,7 +27,7 @@ export const NovedadesCard = (props) => {
     // eslint-disable-next-line react/prop-types
     const { background, title, text, link } = props;
     return(
-        <motion.div className='bg-white min-w-[18rem] max-w-[22rem] rounded-xl text-black pb-8'>
+        <motion.div className='bg-white border border-[#A1A1A1] min-w-[18rem] max-w-[22rem] rounded-xl text-black pb-8 shadow-md shadow-[#A1A1A1]'>
           <img src={background} alt="header" className='object-cover w-full rounded-t-xl' />
           <div className='px-4'>
             <h6 className='text-[1.2rem] font-medium pt-3'>{title}</h6>

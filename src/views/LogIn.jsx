@@ -58,8 +58,8 @@ const LogIn = () => {
             </div>
             <InputForm type={"email"} title={"Email"} name={"email"} onChange={handleInputChange} placeholder={"ejemplo@gmail.com"}/>          
             <InputForm type="password" title="Contraseña" name="password" onChange={handleInputChange} placeholder="●●●●●●●●●●●●●●"/>
-            <AuthGoogle signInGoogle={signInWithGoogle}/>
             <button className="bg-primaryBlue rounded-xl py-3 justify-center text-white text-[1.2rem] font-medium" onClick={onLogin}>INICIAR SESIÓN</button>
+            <AuthGoogle signInGoogle={signInWithGoogle}/>
         </div>
         <img className="object-contain w-[100%]" src={background} alt="background" />
         </section>
