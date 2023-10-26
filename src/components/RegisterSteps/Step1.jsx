@@ -17,7 +17,6 @@ const Step1 = (props) => {
             </div>
             <InputForm type={"email"} title={"Email"} name={"email"} onChange={handleInputChange} placeholder={"ejemplo@gmail.com"}/>
             <button className="bg-primaryBlue rounded-xl py-3 justify-center text-white text-[1.2rem] font-medium" onClick={onNext}>CREAR CUENTA</button>
-            <AuthGoogle signInGoogle={signInWithGoogle}/>
         </div>
     )
 }

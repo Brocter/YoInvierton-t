@@ -1,13 +1,12 @@
 import { useState } from 'react';
-import {auth, googleProvider} from "../config/firebase"
+import {auth, googleProvider} from "../utils/firebase"
 import { createUserWithEmailAndPassword, signInWithRedirect} from 'firebase/auth';
 import background from "../assets/edificioBackground.png"
 import Step1 from '../components/RegisterSteps/Step1';
 import Step2 from '../components/RegisterSteps/Step2';
 import Step3 from '../components/RegisterSteps/Step3';
 import { useNavigate } from 'react-router-dom';
-
-
+import {createUser} from "../utils/firebase";
 
 const Register = () => {
     
@@ -58,6 +57,13 @@ const Register = () => {
               // Signed in
               const user = userCredential.user;
               console.log(user);
+
+              //Create entry in the Firestore
+              createUser(formData, user["uid"]).then((response)=> {
+                console.log("Error creating user in RealTime Database: ", response)
+              })
+
+
               navigate("/home")
               // ...
           })
