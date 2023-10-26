@@ -1,54 +1,88 @@
 import { OportunidadesCard } from "../OportunidadesCard/OportunidadesCard";
-import { useEffect,useState, useRef } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
+import { motion, useMotionValue, animate } from "framer-motion";
 import background from './../../assets/edificioBackground.png';
 import NextArrowButton from "../NextArrowButton/NextArrowButton";
 import PrevArrowButton from "../PrevArrowButton/PrevArrowButton";
 
-const cardData = {
-    background,
-    departamento: "Departamento 9°",
-    rendimiento: "8%",
-    minimoInversion: "1.300,00",
-    porcentaje: "15%",
-    totalInvertido: "1000",
-    inversionMax:"50.000"
-  }
-  
+const range = [-1, 0, 1];
 
+const cardData = {
+  background,
+  departamento: "Departamento 9°",
+  rendimiento: "8%",
+  minimoInversion: "1.300,00",
+  porcentaje: "15%",
+  totalInvertido: "1000",
+  inversionMax: "50.000",
+};
+
+const transition = {
+  type: "spring",
+  bounce: 0,
+};
 
 const OportunidadesCarousel = () => {
-    const [width, setWidth] = useState(0);
-    const carousel = useRef();
-  
-    useEffect(() => {
-      setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
-    }, []);
+  const x = useMotionValue(0);
+  const containerRef = useRef(null);
+  const [index, setIndex] = useState(0);
 
-    const handleNextClick = () => {
-      
-    };
-  
-    const handlePrevClick = () => {
-      
-    };
+  const calculateNewX = () => -index * (containerRef.current?.clientWidth || 0);
+  const clientWidth = containerRef.current?.clientWidth || 0;
 
-    return(
-        <motion.div ref={carousel} whileTap={{cursor:"grabbing"}} className='overflow-hidden pl-4 relative'>
-        <motion.div drag="x" dragConstraints={{ right: 0, left: -width}}>
-          <motion.div className='flex gap-10 w-full py-5'>
-            {[...Array(3)].map((_, index) => (
-              <OportunidadesCard key={index} {...cardData} />
-            ))}
-            
-          </motion.div>
-          
-        </motion.div>
-        <NextArrowButton background="primaryBlue" arrowColor="white" onClick={handleNextClick}/>
-        <PrevArrowButton background="primaryBlue" arrowColor="white" onClick={handlePrevClick}/>
-        
+  const handleEndDrag = (e, dragProps) => {
+    const { offset, velocity } = dragProps;
+
+    if (Math.abs(velocity.y) > Math.abs(velocity.x)) {
+      animate(x, calculateNewX(), transition);
+      return;
+    }
+
+    if (offset.x > clientWidth / 4) {
+      setIndex(index - 1);
+    } else if (offset.x < -clientWidth / 4) {
+      setIndex(index + 1);
+    } else {
+      animate(x, calculateNewX(), transition);
+    }
+  };
+
+  const handleNextClick = () => {
+    return setIndex(index + 1);
+  }
+
+  const handlePrevClick = () => {
+    return setIndex(index - 1);
+  }
+
+
+  useEffect(() => {
+    const controls = animate(x, calculateNewX(), transition);
+    return controls.stop;
+  }, [index]);
+
+
+  return (
+      <>
+      <motion.div ref={containerRef} className='relative w-[100%] translate-x-[6%] h-[42rem]'>
+        {range.map((rangeValue) => {
+        return (
+          <OportunidadesCard
+            key={rangeValue + index}
+            x={x}
+            onDragEnd={handleEndDrag}
+            index={rangeValue + index}
+            active={rangeValue === 0}
+            cardData={cardData}
+          />
+        );
+      })}
+      <NextArrowButton background="primaryBlue" arrowColor="white" onClick={handleNextClick} />
+      <PrevArrowButton background="primaryBlue" arrowColor="white" onClick={handlePrevClick} />
       </motion.div>
-    )
-}
+      
+      </>
+  );
+};
 
 export default OportunidadesCarousel;
