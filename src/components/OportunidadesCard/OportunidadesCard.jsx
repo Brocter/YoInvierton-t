@@ -1,16 +1,40 @@
-
+import { motion } from "framer-motion";
 
 export const OportunidadesCard = (props) => {
 
-  const {departamento, background, porcentaje, rendimiento, minimoInversion, inversionMax, totalInvertido} = props;
+  const {x, onDragEnd, index, active, renderCard, cardData} = props;
+  const {departamento, background, porcentaje, rendimiento, minimoInversion, inversionMax, totalInvertido} = cardData;
+  const variants = {
+    center: (active) => {
+      return {
+        scale: active ? 1.05 : 0.95,
+        opacity: active ? 1 : 0.5,
+      };
+    },
+  };
     return(
-        <div className='border mt-4 border-primaryLightBlue rounded-b-xl rounded-tr-[1.9rem] shadow-lg shadow-primaryLightBlue max-w-[25rem] min-w-[21.3rem]'>
+        <motion.div style={{
+          x,
+          left: `${index * 100}%`,
+          right: `${index * 100}%`,
+        }}
+        drag="x"
+        dragElastic={0.2}
+        onDragEnd={onDragEnd}
+        variants={variants}
+        custom={active}
+        animate={"center"}
+        transition={{
+          type: "spring",
+          duration: 0.4,
+        }}
+        className='border mt-8 border-primaryLightBlue rounded-b-xl rounded-tr-[1.9rem] shadow-lg shadow-primaryLightBlue max-w-[22rem] min-w-[20.3rem] absolute overflow-hidden '>
         <div className='px-4 py-3'>  
         <h5 className='text-primaryBlue font-bold text-[1.2rem]'>{ departamento }</h5>
         <h6 className='text-[1rem] text-black'>Jardin Regazzoni</h6>
         </div>
         <p className='bg-primaryBlue text-center text-white py-1 text-[0.84rem]'>Proyecto activo - Cobro sobre venta</p>
-        <img className="object-cover" src={background} alt="background" />
+        <img className="object-cover" src={background} alt="background" draggable="false"/>
         <div className='px-4 mx-auto pb-8'>
           <div className='py-3'>
           <div className='flex justify-between items-center'>
@@ -50,7 +74,7 @@ export const OportunidadesCard = (props) => {
           </div>
           <button className='bg-primaryBlue text-white w-full rounded-xl py-[0.6rem] text-[1rem]'>QUIERO INVERTIR</button>
         </div>
-      </div>
+      </motion.div>
     )
 }
 
