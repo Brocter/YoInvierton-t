@@ -1,12 +1,34 @@
+import { motion } from "framer-motion";
 
+export const OportunidadesCardCarousel = (props) => {
 
-export const OportunidadesCard = (props) => {
-
-  const {cardData} = props;
+  const {x, onDragEnd, index, active, cardData} = props;
   const {departamento, background, porcentaje, rendimiento, minimoInversion, inversionMax, totalInvertido} = cardData;
+  const variants = {
+    center: (active) => {
+      return {
+        scale: active ? 1 : 0.90,
+        opacity: active ? 1 : 0.5,
+      };
+    },
+  };
     return(
-        <div
-        className='border mt-8 border-primaryLightBlue rounded-b-xl rounded-tr-[1.9rem] shadow-lg shadow-primaryLightBlue w-[100%] overflow-hidden md:block'>
+        <motion.div style={{
+          x,
+          left: `${index * 100}%`,
+          right: `${index * 100}%`,
+        }}
+        drag="x"
+        dragElastic={0.2}
+        onDragEnd={onDragEnd}
+        variants={variants}
+        custom={active}
+        animate={"center"}
+        transition={{
+          type: "spring",
+          duration: 0.4,
+        }}
+        className='border mt-8 border-primaryLightBlue rounded-b-xl rounded-tr-[1.9rem] shadow-lg shadow-primaryLightBlue w-[100%] absolute overflow-hidden'>
         <div className='px-4 py-3'>  
         <h5 className='text-primaryBlue font-bold text-[1.2rem]'>{ departamento }</h5>
         <h6 className='text-[1rem] text-black'>Jardin Regazzoni</h6>
@@ -40,7 +62,7 @@ export const OportunidadesCard = (props) => {
           </div>
           </div>
           <div className='pb-4'>
-            <p className='font-bold text-primaryBlue text-[1rem] pb-2 text-left'>Capital fondeado</p>
+            <p className='font-bold text-primaryBlue text-[1rem] pb-2'>Capital fondeado</p>
           <div className='bg-primaryLightBlue rounded-full w-full'>
             <div className={`bg-primaryBlue w-[15%] pt-3 rounded-full`}>
             </div>
@@ -52,7 +74,7 @@ export const OportunidadesCard = (props) => {
           </div>
           <button className='bg-primaryBlue text-white w-full rounded-xl py-[0.6rem] text-[1rem]'>QUIERO INVERTIR</button>
         </div>
-      </div>
+      </motion.div>
     )
 }
 

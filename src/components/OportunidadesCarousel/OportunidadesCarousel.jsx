@@ -1,4 +1,4 @@
-import { OportunidadesCard } from "../OportunidadesCard/OportunidadesCard";
+import { OportunidadesCardCarousel } from "../OportunidadesCardCarousel/OportunidadesCardCarousel";
 import { useEffect, useState, useRef } from "react";
 import { motion, useMotionValue, animate } from "framer-motion";
 import background from './../../assets/edificioBackground.png';
@@ -63,11 +63,11 @@ const OportunidadesCarousel = () => {
 
 
   return (
-      <>
-      <motion.div ref={containerRef} className='relative w-[100%] translate-x-[6%] h-[42rem]'>
+      <motion.div className="px-[5%] relative overflow-hidden flex gap-4">
+      <motion.div ref={containerRef} className='relative w-[100%] h-[clamp(42rem,160vw,60rem)]'>
         {range.map((rangeValue) => {
         return (
-          <OportunidadesCard
+          <OportunidadesCardCarousel
             key={rangeValue + index}
             x={x}
             onDragEnd={handleEndDrag}
@@ -77,11 +77,11 @@ const OportunidadesCarousel = () => {
           />
         );
       })}
+      
+      </motion.div>
       <NextArrowButton background="primaryBlue" arrowColor="white" onClick={handleNextClick} />
       <PrevArrowButton background="primaryBlue" arrowColor="white" onClick={handlePrevClick} />
       </motion.div>
-      
-      </>
   );
 };
 

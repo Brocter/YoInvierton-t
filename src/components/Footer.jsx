@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import logo  from './../assets/logo.png'
+import camaraLogo from "./../assets/camaraFintech.png"
 
 const Footer = () => {
     return(
@@ -21,10 +23,15 @@ const Footer = () => {
           </svg>
           </div>
         </div>
-        <div className="text-white text-center mt-[-2rem] ">
-        <p className='pb-6'>Designed & Developed by <b>Mayland Labs</b></p>
-        <p className='pb-2'>Copyright © 2023 | All Rights Reserved</p>
+        <div className="text-white text-center mt-[-2rem] grid gap-4 md:grid-cols-2 px-4">
+        <p className='text-left'>Designed & Developed by <b>Mayland Labs</b></p>
+        <p className='text-right'>Copyright © 2023 | All Rights Reserved</p>
         </div>
+        <div className='flex justify-around items-center md:flex-col md:items-start max-w-[20rem] px-4 mt-6'>
+        <Link to={"/disclaimer"}><p className='underline w-[50%] text-white text-[1.15rem] font-bold'>Disclaimer</p></Link>
+        <img className="w-[50%]" src={camaraLogo} alt="logo" />
+        </div>
+        
       </section>
     )
 }
