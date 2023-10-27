@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import CarouselNovedades from "../CarouselNovedades/CarouselNovedades"
 import NovedadesCards from "../NovedadesCards/NovedadesCards";
-import { Link } from "react-router-dom";
 
 export const Section5 = () => {
   const [posts,setPosts] = useState([])
@@ -37,7 +36,6 @@ export const Section5 = () => {
   }
   useEffect(() => {
     getPosts()
-    console.log(posts)
   },[]);
   
   
