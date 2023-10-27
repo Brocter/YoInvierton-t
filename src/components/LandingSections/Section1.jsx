@@ -8,7 +8,6 @@ import announcement from './../../assets/vox 1.png'
 export const Section1 = () => {
     return(
         <section className="font-barlow text-black relative lg:flex lg:pb-[20rem]">
-            
             <div className='w-[50%]'></div>
             <div className="mx-auto px-7 text-left justify-left max-w-[32rem] lg:pt-[3.5rem] lg:ml-0">
               <div className='hidden lg:flex max-h-[2.9rem] gap-2'>

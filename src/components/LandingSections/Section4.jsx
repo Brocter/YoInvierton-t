@@ -1,3 +1,4 @@
+
 import OportunidadesCards from '../OportunidadesCards/OportunidadesCards';
 import OportunidadesCarousel from '../OportunidadesCarousel/OportunidadesCarousel';
 
@@ -22,4 +23,3 @@ export const Section4 = () => {
       </section>
     )
 }
-

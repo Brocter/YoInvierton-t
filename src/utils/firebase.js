@@ -1,12 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import {getAuth, GoogleAuthProvider} from 'firebase/auth'
-import { getFirestore } from 'firebase/firestore'
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import {getDatabase,set,get,ref,update,off,push,onValue} from "firebase/database";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
   authDomain: import.meta.env.VITE_AUTH_DOMAIN,
@@ -18,6 +14,25 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const db = getDatabase(app)
+
+//Creates user entry in RealTime Database
+export const createUser = async (formData, uid) => {
+
+  //Object with user presets
+  const userData = {
+    isAdmin: false,
+    signupDate: Date.now(),
+    fullName: {
+      name: formData.name,
+      surname: formData.lastName
+    },
+    DNI: formData.DNI,
+  } 
+
+  return set(ref(db, "users" + "/" + uid), userData);
+}
+
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider()
-export const db = getFirestore(app);
+
