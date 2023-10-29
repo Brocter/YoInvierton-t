@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { OportunidadesCard } from "../components/OportunidadesCard/OportunidadesCard";
-import background from "../assets/edificioBackground.png"
-
+import background from "../assets/edificioBackground.png";
 
 const Investments = () => {
   useEffect(() => {
@@ -16,10 +15,10 @@ const Investments = () => {
     porcentaje: "15%",
     totalInvertido: "1000",
     inversionMax: "50.000",
-  });  
+  });
 
   return (
-    <section>
+    <div>
       <div id="ProjectOverview" className="lg:flex flex-row w-screen h-2/5">
         <div id="Description" className="lg:flex flex-col">
           <div id="Header">
@@ -51,17 +50,15 @@ const Investments = () => {
         </div>
       </div>
       <div className="grid md:grid-cols-3 gap-4">
-        <OportunidadesCard cardData ={cardData}/>
-        <OportunidadesCard cardData ={cardData}/>
-        <OportunidadesCard cardData ={cardData}/>
-        <OportunidadesCard cardData ={cardData}/>
-        <OportunidadesCard cardData ={cardData}/>
-        <OportunidadesCard cardData ={cardData}/>
-        <OportunidadesCard cardData ={cardData}/>
-      
+        <OportunidadesCard cardData={cardData} />
+        <OportunidadesCard cardData={cardData} />
+        <OportunidadesCard cardData={cardData} />
+        <OportunidadesCard cardData={cardData} />
+        <OportunidadesCard cardData={cardData} />
+        <OportunidadesCard cardData={cardData} />
+        <OportunidadesCard cardData={cardData} />
       </div>
-      
-    </section>
+    </div>
   );
 };
 

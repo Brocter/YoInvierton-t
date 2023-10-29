@@ -1,7 +1,7 @@
 
 import OportunidadesCards from '../OportunidadesCards/OportunidadesCards';
 import OportunidadesCarousel from '../OportunidadesCarousel/OportunidadesCarousel';
-
+import { Link } from 'react-router-dom';
 
 
 export const Section4 = () => {
@@ -18,7 +18,9 @@ export const Section4 = () => {
           <OportunidadesCards/>
         </div>
         <div className='mx-auto flex justify-center'>
-        <button className="bg-primaryLightBlue border-primaryBlue border rounded-xl py-3 text-primaryBlue text-[1.2rem] font-medium text-center px-[6rem] my-[2rem]">Ver más</button>
+        <Link to={"/inversiones"} preventScrollReset={true} >
+            <button className="bg-primaryLightBlue border-primaryBlue border rounded-xl py-3 text-primaryBlue text-[1.2rem] font-medium text-center px-[6rem] my-[2rem]">Ver más</button>
+        </Link>
         </div>
       </section>
     )
