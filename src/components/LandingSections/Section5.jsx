@@ -52,10 +52,10 @@ export const Section5 = () => {
         <path fillRule="evenodd" clipRule="evenodd" d="M0 0L80.4 4.75C159.6 9.5 320.4 19 480 47.5C639.598 76 800.402 123.5 960 118.75C1119.6 114 1280.4 57 1359.6 28.5L1440 0V228H1359.6C1280.4 228 1119.6 228 960 228C800.402 228 639.598 228 480 228C320.4 228 159.6 228 80.4 228H0V0Z" fill="#4886F8"/>
         </svg>
         </div>
-        <div className='bg-primaryBlue py-[2rem]'>
+        <div className='bg-primaryBlue py-[2rem] pt-10 lg:mt-10'>
         <div className='bg-primaryBlue py-[2rem] mx-auto px-6'>
-        <h2 className='text-white text-[3rem] font-[600] leading-[1.2]  tracking-[-0.08rem] md:text-center'>Enterate de las <b className="font-extrabold">novedades</b></h2>
-        <h6 className='text-white font-[500] text-[1.5rem] leading-[1.2] py-6  md:text-center'>Sumate a nuestro <b className='underline'>blog</b> para no perderte de ningún avance</h6>
+        <h2 className='text-white text-[clamp(3rem,4.2vw,3.6rem)] font-[600] leading-[1.2]  tracking-[-0.08rem] md:text-center'>Enterate de las <b className="font-extrabold">novedades</b></h2>
+        <h6 className='text-white font-[500] text-[clamp(1.5rem,2vw,1.75rem)] leading-[1.2] py-6  md:text-center'>Sumate a nuestro <b className='underline'>blog</b> y no te pierdas de ningún avance</h6>
         </div>
         <div className=" bg-primaryBlue mx-auto md:hidden">
         {posts.length > 0 ? <CarouselNovedades posts={posts} /> : null}
@@ -81,7 +81,7 @@ export const Section5 = () => {
         </svg>VER MAS</button>
         </a>
         </div>
-        <div className="hidden md:block pointer-events-none max-h-[10rem]">
+        <div className="hidden md:block pointer-events-none max-h-[10rem] mt-[-0.1rem]">
         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1440 207" fill="none">
         <path fillRule="evenodd" clipRule="evenodd" d="M-1 207H59.0833C119.167 207 239.333 207 359.5 203.167C479.667 199.333 599.833 191.667 720 176.333C840.167 161 960.333 138 1080.5 130.333C1200.67 122.667 1320.83 130.333 1380.92 134.167L1441 138V0H1380.92C1320.83 0 1200.67 0 1080.5 0C960.333 0 840.167 0 720 0C599.833 0 479.667 0 359.5 0C239.333 0 119.167 0 59.0833 0H-1V207Z" fill="#4886F8"/>
         </svg>

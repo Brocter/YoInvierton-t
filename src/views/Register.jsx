@@ -7,6 +7,7 @@ import Step2 from '../components/RegisterSteps/Step2';
 import Step3 from '../components/RegisterSteps/Step3';
 import { useNavigate } from 'react-router-dom';
 import {createUser} from "../utils/firebase";
+import backgroundDesktop from "../assets/edificioDesktop.png"
 
 const Register = () => {
     
@@ -76,14 +77,18 @@ const Register = () => {
         }
 
     return(
-        <section>
+        <section className='relative lg:flex'>
+        <div className='w-[50%] hidden lg:block '></div>
+        <div className='lg:w-[50%] ml-auto lg:pt-[clamp(1rem,4vw,6rem)]'>
          {step === 1 && (
         <Step1 signInWithGoogle={signInWithGoogle} handleInputChange={handleInputChange} onNext={handleNext}/>)}
         {step === 2 && (
         <Step2 handleInputChange={handleInputChange} onNext={handleNext} onPrev={handlePrevious}/>)}
         {step === 3 && (
         <Step3 handleInputChange={handleInputChange} onSubmit={onSubmit} onPrev={handlePrevious}/>)}
-        <img className="object-contain w-[100%]" src={background} alt="background" />
+        </div>
+        <img className="object-contain w-[100%] lg:hidden" src={background} alt="background" draggable="false"/>
+        <img className="object-contain hidden w-[100%] absolute lg:inline -z-10" src={backgroundDesktop} alt="background" draggable="false"/>
         </section>
     )
 }

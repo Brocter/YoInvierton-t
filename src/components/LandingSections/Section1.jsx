@@ -7,9 +7,9 @@ import announcement from './../../assets/vox 1.png'
 
 export const Section1 = () => {
     return(
-        <section className="font-barlow text-black relative lg:flex lg:pb-[20rem]">
+        <section className="font-barlow text-black relative lg:flex lg:pb-[clamp(8rem,15vw,26rem)] lg:mb-[clamp(2rem,10vw,9rem)]">
             <div className='w-[50%]'></div>
-            <div className="mx-auto px-7 text-left justify-left max-w-[32rem] lg:pt-[3.5rem] lg:ml-0">
+            <div className="mx-auto px-7 text-left justify-left max-w-[32rem] lg:pt-[clamp(3.5rem,4.5vw,6rem)] lg:ml-0">
               <div className='hidden lg:flex max-h-[2.9rem] gap-2'>
                 <img className="object-cover" src={announcement} alt="megafono" />
                 <div>
@@ -34,8 +34,8 @@ export const Section1 = () => {
                   <img className="pr-1" src={whatsappIcon} alt="wppIcon" />Consultanos</button>
               </div>
             </div>
-            <img className="object-fit hidden w-[100%] lg:inline lg:absolute z-[-1]" src={edificioDesktop} alt="background" />
-            <img className="object-contain w-[100%] lg:hidden" src={background} alt="background" />
+            <img className="object-fit hidden w-[100%] lg:inline lg:absolute z-[-1]" src={edificioDesktop} alt="background" draggable="false"/>
+            <img className="object-contain w-[100%] lg:hidden" src={background} alt="background" draggable="false"/>
         </section>
     )
 }
