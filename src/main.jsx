@@ -1,11 +1,49 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
+import App from "./App";
 import "./index.css";
-import { BrowserRouter } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import Register from "./views/Register";
+import LogIn from "./views/LogIn";
+import Investments from "./views/Investments";
+import Disclaimer from "./views/Disclaimer";
+import Landing from "./views/Landing";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Landing />,
+      },
+      {
+        path: "registro",
+        element: <Register />,
+      },
+      {
+        path: "iniciar-sesion",
+        element: <LogIn />,
+      },
+      {
+        path: "inversiones",
+        element: <Investments />,
+      },
+      {
+        path: "disclaimer",
+        element: <Disclaimer />,
+      },
+    ],
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <div className='w-full h-full'>
+    <RouterProvider router={router}>
+    </RouterProvider>
+  </div>
 );
