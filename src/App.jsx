@@ -5,9 +5,9 @@ import Navbar from './components/Navbar/Navbar';
 
 function App() {
   return (
-    <div>
+    <div className='w-full h-full'>
         <Navbar/>
-        <Outlet />
+        <Outlet className='w-full h-full'/>
     </div>
   );
 }

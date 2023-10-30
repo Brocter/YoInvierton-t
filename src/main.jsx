@@ -5,7 +5,6 @@ import "./index.css";
 import {
   createBrowserRouter,
   RouterProvider,
-  ScrollRestoration,
 } from "react-router-dom";
 import Register from "./views/Register";
 import LogIn from "./views/LogIn";
@@ -43,13 +42,8 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <div>
+  <div className='w-full h-full'>
     <RouterProvider router={router}>
-      <ScrollRestoration
-        getKey={(location, matches) => {
-          return location.pathname;
-        }}
-      />
     </RouterProvider>
   </div>
 );

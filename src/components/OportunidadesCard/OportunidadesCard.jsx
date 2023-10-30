@@ -50,7 +50,7 @@ export const OportunidadesCard = (props) => {
           <p>{porcentaje} financiamiento alcanzado</p>
           </div>
           </div>
-          <button className='bg-primaryBlue text-white w-full rounded-xl py-[0.6rem] text-[1rem]'>QUIERO INVERTIR</button>
+          <a href={"https://wa.me/5491124098869?text=Estoy interesado en invertir en esta propiedad"} target="_blank" > <button className='bg-primaryBlue text-white w-full rounded-xl py-[0.6rem] text-[1rem]'>QUIERO INVERTIR</button></a>
         </div>
       </div>
     )
