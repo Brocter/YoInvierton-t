@@ -2,9 +2,7 @@
 import { initializeApp } from "firebase/app";
 import {getAuth, GoogleAuthProvider} from 'firebase/auth'
 import {getDatabase,set,get,ref,update,off,push,onValue} from "firebase/database";
-import dotenv from "dotenv";
 
-dotenv.config()
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
