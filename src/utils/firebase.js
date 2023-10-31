@@ -2,8 +2,9 @@
 import { initializeApp } from "firebase/app";
 import {getAuth, GoogleAuthProvider} from 'firebase/auth'
 import {getDatabase,set,get,ref,update,off,push,onValue} from "firebase/database";
+import dotenv from "dotenv";
 
-
+dotenv.config()
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
@@ -12,7 +13,7 @@ const firebaseConfig = {
   storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
   appId: import.meta.env.VITE_APP_ID,
-  databaseURL: import.meta.env.VITE_DATABASE_URL, // If you need databaseURL
+  databaseURL: import.meta.env.VITE_DATABASE_URL, 
 };
 
 // Initialize Firebase
