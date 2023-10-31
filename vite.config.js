@@ -1,11 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// Import dotenv to load environment variables
-import dotenv from 'dotenv'
-
-// Load environment variables from the appropriate .env file
-dotenv.config({ path: `.env.${import.meta.env.MODE}` })
 
 // https://vitejs.dev/config/
 export default defineConfig({
