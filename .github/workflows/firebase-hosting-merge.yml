@@ -10,18 +10,6 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Create env file
-        run: |
-          touch .env.production
-          echo VITE_API_KEY=AIzaSyA1zmiWZ3CrEKwOv1_mnprsXUDiHRuF0Wo >> .env.production
-          echo VITE_AUTH_DOMAIN=yo-invierto-development.firebaseapp.com >> .env.production
-          echo VITE_PROJECT_ID=yo-invierto-development >> .env.production
-          echo VITE_STORAGE_BUCKET=yo-invierto-development.appspot.com >> .env.production
-          echo VITE_MESSAGING_SENDER_ID=7351727677871016319315101 >> .env.production
-          echo VITE_APP_ID=1:735172767787:web:aa7d8446ba74ac313a7a6e >> .env.production
-          echo VITE_MEASUREMENT_ID=G-4C02022YQC >> .env.production
-          echo VITE_DATABASE_URL=https://yo-invierto-development-default-rtdb.firebaseio.com >> .env.production
-          cat .env.production
       - uses: actions/checkout@v3
       - run: npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
