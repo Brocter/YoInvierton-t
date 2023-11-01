@@ -19,13 +19,6 @@ body,
   
 }
 
-#root {
-  width: 100%;
-  height: 100vh;
-}
-
-
-
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -33,7 +26,6 @@ body,
     --background-end-rgb: 198, 198, 198;
   }
 }
-
 
 /* clears the ‘X’ from Chrome */
 input[type="search"]::-webkit-search-decoration,

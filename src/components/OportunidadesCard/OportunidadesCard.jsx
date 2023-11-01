@@ -6,7 +6,7 @@ export const OportunidadesCard = (props) => {
   const {departamento, background, porcentaje, rendimiento, minimoInversion, inversionMax, totalInvertido} = cardData;
     return(
         <div
-        className='mx-auto border mt-8 border-primaryLightBlue rounded-b-xl rounded-tr-[1.9rem] shadow-lg shadow-primaryLightBlue w-[100%] overflow-hidden max-w-[30rem] md:block'>
+        className='mx-auto border mt-8 border-primaryLightBlue rounded-b-xl rounded-tr-[1.9rem] shadow-lg shadow-primaryLightBlue w-[100%] overflow-hidden md:block'>
         <div className='px-4 py-3'>  
         <h5 className='text-primaryBlue font-bold text-[1.2rem]'>{ departamento }</h5>
         <h6 className='text-[1rem] text-black'>Jardin Regazzoni</h6>
