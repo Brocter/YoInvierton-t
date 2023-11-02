@@ -47,12 +47,12 @@ export const Section5 = () => {
           <path fillRule="evenodd" clipRule="evenodd" d="M0 0L20.9375 1.6875C41.5625 3.375 83.4375 6.75 125 16.875C166.562 27 208.438 43.875 250 42.1875C291.562 40.5 333.438 20.25 354.062 10.125L375 0V81H354.062C333.438 81 291.562 81 250 81C208.438 81 166.562 81 125 81C83.4375 81 41.5625 81 20.9375 81H0V0Z" fill="#4886F8"/>
           </svg>
         </div>
-        <div className="hidden md:block mb-[-2rem] max-h-[10rem]">
+        <div className="hidden md:block mb-[-2rem] max-h-[14rem]">
         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1440 228" fill="none">
         <path fillRule="evenodd" clipRule="evenodd" d="M0 0L80.4 4.75C159.6 9.5 320.4 19 480 47.5C639.598 76 800.402 123.5 960 118.75C1119.6 114 1280.4 57 1359.6 28.5L1440 0V228H1359.6C1280.4 228 1119.6 228 960 228C800.402 228 639.598 228 480 228C320.4 228 159.6 228 80.4 228H0V0Z" fill="#4886F8"/>
         </svg>
         </div>
-        <div className='bg-primaryBlue py-[2rem] pt-10 lg:mt-10'>
+        <div className='bg-primaryBlue py-[2rem] pt-10 lg:mt-5'>
         <div className='bg-primaryBlue py-[2rem] mx-auto px-6'>
         <h2 className='text-white text-[clamp(3rem,4.2vw,3.6rem)] font-[600] leading-[1.2]  tracking-[-0.08rem] md:text-center'>Enterate de las <b className="font-extrabold">novedades</b></h2>
         <h6 className='text-white font-[500] text-[clamp(1.5rem,2vw,1.75rem)] leading-[1.2] py-6  md:text-center'>Sumate a nuestro <b className='underline'>blog</b> y no te pierdas de ningún avance</h6>

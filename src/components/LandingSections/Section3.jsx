@@ -15,7 +15,7 @@ export const Section3 = () => {
         <section className='relative isolate py-8 after:content-[""] after:bg-primaryBlue after:absolute after:inset-[0] after:skew-y-[-5deg] after:z-[-1] lg:after:skew-y-[-3deg]'>
         <div className='flex mt-4 pb-[max(1rem,5vw)]'>
         <div className='w-[45%] lg:w-[50%]'></div>
-        <div className='rounded-l-full bg-white h-[clamp(5.25rem,8vw,6rem)] skew-y-[-5deg] w-[58%] isolate lg:skew-y-[-3deg]'>
+        <div className='rounded-l-full bg-white h-[clamp(5.25rem,8vw,6rem)] skew-y-[-5deg] w-[58%] isolate lg:skew-y-[-3deg] xl:hidden'>
           <img className="py-[clamp(1.25rem,2vw,1.6rem)] pl-4 skew-y-[5deg] lg:skew-y-[3deg]" src={isologo} alt="isologo" />
         </div>
         </div>

@@ -13,7 +13,7 @@ const cardData = {
 
 const OportunidadesCards = ()=>{
     return(
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 gap-4 max-w-[80rem] mx-auto xl:gap-6">
             {[...Array(3)].map((_, i) => (
          <OportunidadesCard key={i} cardData={cardData}/>
             ))}
