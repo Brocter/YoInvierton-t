@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from "framer-motion";
 import { NovedadesCard } from '../NovedadesCard/NovedadesCard';
-import background from "../../assets/avanceObra.png";
+
 
 
 
