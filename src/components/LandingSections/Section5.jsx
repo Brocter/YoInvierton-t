@@ -4,35 +4,30 @@ import NovedadesCards from "../NovedadesCards/NovedadesCards";
 
 export const Section5 = () => {
   const [posts,setPosts] = useState([])
+  const accessToken = '209bab65d26117f2be3a74c4fb9e7e705d9a676bb0523e7be7a905e3e5861d9ca';
+
+  const apiUrl = 'https://api.medium.com/v1/users/@yoinvierto/posts';
 
   const getPosts = async () =>{
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    var requestOptions = {
-      method: "get",
-      headers: myHeaders,
-      redirect: "follow",
-    };
     try {
-      const response = await fetch("https://v1.nocodeapi.com/brocter/medium/RAibqBljDpWVfJgN", requestOptions)
-      const result = await response.json();
-      result.forEach((post) => {
-        const parser = new DOMParser();
-        const htmlDoc = parser.parseFromString(post.content, 'text/html');
-        const firstImage = htmlDoc.querySelector('img');
-        if (firstImage) {
-          post.background = firstImage.getAttribute('src');
+      const response = await fetch(apiUrl, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
         }
-        const thirdP = htmlDoc.querySelectorAll("p")[2].textContent; // Get the text content of the third <p> tag
-      const truncatedThirdP =
-        thirdP.slice(0, 179) + (thirdP.length > 179 ? "..." : "");
-
-      post.summary = truncatedThirdP;
       });
-      return setPosts(result);
+
+      if (response.status === 200) {
+        const data = await response.json();
+        setPosts(data);
+        console.log(data);
+      } else {
+        throw new Error(`Request failed with status: ${response.status}`);
+      }
     } catch (error) {
-      console.log(error);
-  }
+      console.log(error.message);
+    }
+  
   }
   useEffect(() => {
     getPosts()
