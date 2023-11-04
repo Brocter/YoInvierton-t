@@ -35,6 +35,19 @@ export const createUser = async (formData, uid) => {
   return set(ref(db, "users" + "/" + uid), userData);
 }
 
+export const getUserData = async (uid) => {
+  console.log("looking for user " + uid);
+   get(db, `users/${uid}`).then((snapshot) => {
+    console.log("asdsad", snapshot)
+    if (snapshot && snapshot.exists()) {
+      return snapshot.val()
+    } else {
+      console.log("User data not found.");
+    }
+   })
+}
+
+
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider()
 

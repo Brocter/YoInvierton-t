@@ -62,7 +62,7 @@ const Investments = () => {
                 </div>
               </div>
             </div>
-            <div id="Text" className=" flex flex-col  lg:pt-[2rem] lg:w-[42rem] w-full h-auto">
+            <div id="Text" className=" flex flex-col  lg:w-[42rem] w-full h-auto">
               <h1 className="font-bold text-6xl text-primaryBlue">
                 Jardin Regazzoni
               </h1>
@@ -73,7 +73,7 @@ const Investments = () => {
                 fames risus. Lorem ipsum dolor.
               </p>
             </div>
-            <div id="Highlights" className="flex flex-row w-full mt-8 bg-primaryBlue lg:bg-white ml-[-1.2rem] w-[110%] ">
+            <div id="Highlights" className="flex flex-row w-full mt-8 bg-primaryBlue lg:bg-white ml-[-1.2rem] w-[115%] ">
 
               <div className="flex flex-row items-center w-[50%] p-2 pl-3  ">
                 <div className="lg:flex flex-col text-white lg:text-primaryBlue text-[1.5rem] text-center font-bold">

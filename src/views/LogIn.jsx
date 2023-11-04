@@ -25,9 +25,9 @@ const LogIn = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        const user = userCredential.user;
+        //Save user object in localstorage
+        localStorage.setItem("user", JSON.stringify(userCredential.user))
         navigate("/home");
-        console.log(user);
       })
       .catch((error) => {
         const errorCode = error.code;
