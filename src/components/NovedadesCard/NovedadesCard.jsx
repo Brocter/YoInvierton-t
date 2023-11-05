@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 export const NovedadesCard = (props) => {
   const { background, title, text, link } = props;
     return(
-        <motion.div className='bg-white border border-[#A1A1A1] min-w-[18rem] rounded-xl text-black pb-8 shadow-md shadow-[#A1A1A1] md:flex md:pb-0 md:mb-6'>
+        <motion.div className='bg-white border border-[#A1A1A1] min-w-[18rem] max-w-[55rem] md:max-h-[10rem] mx-auto rounded-xl text-black pb-8 shadow-md shadow-[#A1A1A1] md:flex md:pb-0 md:mb-6'>
           <img src={background} alt="header" className='object-cover w-full md:w-[30%] rounded-t-xl md:rounded-l-xl md:rounded-r-none' draggable="false"/>
           <div className='px-4 md:pb-4'>
             <h6 className='text-[1.2rem] font-medium pt-3'>{title}</h6>

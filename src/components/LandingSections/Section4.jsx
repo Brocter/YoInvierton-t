@@ -17,8 +17,8 @@ export const Section4 = () => {
         <div className='hidden md:block px-4 mx-auto'>
           <OportunidadesCards/>
         </div>
-        <div className='mx-auto flex justify-center'>
-        <Link to={"/inversiones"} preventScrollReset={true} >
+        <div className='mx-auto flex justify-center lg:pt-4'>
+        <Link to="/inversiones" preventScrollReset={true} >
             <button className="bg-primaryLightBlue border-primaryBlue border rounded-xl py-3 text-primaryBlue text-[1.2rem] font-medium text-center px-[6rem] my-[2rem]">Ver más</button>
         </Link>
         </div>

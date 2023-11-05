@@ -18,30 +18,29 @@ const Investments = () => {
   });
 
   return (
-    <div className="flex flex-col">
+    <section className="lg:mt-4 lg:px-4">
       <div
         id="ProjectOverview"
-        className="flex flex-col lg:flex-row w-full lg:h-[40vh] lg:pl-[8rem] items-center bg-primarytBlue"
+        className="lg:px-4 mx-auto bg-primarytBlue lg:flex lg:flex-row-reverse items-center justify-end max-w-[105rem] gap-4"
       >
         <div
           id="ProjectVideo"
-          className="flex flex-col items-start w-full h-[14.55rem] lg:w-[37.5%] lg:h-[25.4rem] lg:max-w-[45em]"
+          className="w-[100%] h-[15rem] lg:h-[24rem] max-w-[50rem]"
         >
           <iframe
             width="100%"
             height="100%"
             src="https://www.youtube.com/embed/dWmvwOZisNg?si=GEQf1z7MMgsN40rp"
             title="YouTube video player"
-            frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
           ></iframe>
         </div>
         <div
           id="Description"
-          className="flex flex-col items-start lg:ml-[3.5rem] pt-[2rem] p-[1.2rem]"
+          className="pt-[2rem] lg:max-w-[35rem] lg:pt-0"
         >
-          <div id="Header" className="flex flex-col w-full">
+          <div id="Header" className="flex flex-col w-full px-[1.2rem] ">
             <div id="ProgressBar" className="w-[20rem] mb-[1rem]">
               <p className="font-bold text-primaryBlue">En Construcción</p>
               <div className="bg-primaryLightBlue rounded-full w-full">
@@ -62,20 +61,22 @@ const Investments = () => {
                 </div>
               </div>
             </div>
-            <div id="Text" className=" flex flex-col  lg:w-[42rem] w-full h-auto">
-              <h1 className="font-bold text-6xl text-primaryBlue">
+            <div id="Text" className=" flex flex-col w-full h-auto">
+              <h2 className="font-bold text-[clamp(2.4rem,5vw,3.8rem)] text-primaryBlue">
                 Jardin Regazzoni
-              </h1>
-              <p className="mt-[1.5rem]">
+              </h2>
+              <p className="mt-[1rem]">
                 Lorem ipsum dolor sit amet consectetur. Feugiat tempor enim erat
                 a non fames risus. Lorem ipsum dolor sit amet consectetur. Lorem
                 ipsum dolor sit amet consectetur. Feugiat tempor enim erat a non
                 fames risus. Lorem ipsum dolor.
               </p>
             </div>
-            <div id="Highlights" className="flex flex-row w-full mt-8 bg-primaryBlue lg:bg-white ml-[-1.2rem] w-[115%] ">
+            
+          </div>
+          <div id="Highlights" className="flex w-full justify-between mt-8 bg-primaryBlue lg:bg-white">
 
-              <div className="flex flex-row items-center w-[50%] p-2 pl-3  ">
+              <div className="flex items-center w-[50%] p-2 pl-3  ">
                 <div className="lg:flex flex-col text-white lg:text-primaryBlue text-[1.5rem] text-center font-bold">
                   <div className="text-[2.05rem] mb-[-0.8rem]">1000</div>
                   <p>USD</p>
@@ -95,16 +96,14 @@ const Investments = () => {
                 </p>
               </div>
             </div>
-          </div>
         </div>
+        
       </div>
-      <div id="ProjectsSection" className="w-full h-auto p-5 pt-5 lg:pl-[7rem] ">
-        <div id="title" className="lg:pl-2">
-          <p className="font-bold text-3xl text-primaryBlue">Proyectos</p>
-        </div>
+      <div id="ProjectsSection" className="px-4 pt-8 max-w-[105rem] mx-auto mt-6 lg:mt-12">
+        <h6 className="text-[clamp(1.5rem,2vw,1.75rem)] font-bold leading-[1.2] text-primaryBlue" >Oportunidades</h6>
         <div
           id="list"
-          className="grid lg:grid-cols-5 gap-4 pt-0 lg:p-2"
+          className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
         >
           {Array(7)
             .fill(true)
@@ -113,7 +112,7 @@ const Investments = () => {
             ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
