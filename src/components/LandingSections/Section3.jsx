@@ -1,13 +1,14 @@
 import isologo from "./../../assets/isotipo.png";
 import Carousel from "../CarouselRegazzoni/Carousel"
+import { foto1, foto2,foto3,foto4,foto5, foto6 } from "../../assets/carouselImages/carouselImages";
 
 const images = [
-  "https://images.pexels.com/photos/169647/pexels-photo-169647.jpeg?auto=compress&cs=tinysrgb&w=600",
-  "https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  "https://images.pexels.com/photos/773471/pexels-photo-773471.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  "https://images.pexels.com/photos/672532/pexels-photo-672532.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  "https://images.pexels.com/photos/632522/pexels-photo-632522.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  "https://images.pexels.com/photos/777059/pexels-photo-777059.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  foto1,
+  foto2,
+  foto3,
+  foto4,
+  foto5,
+  foto6
 ];
 
 export const Section3 = () => {
@@ -40,7 +41,8 @@ export const Section3 = () => {
             <h5 className='font-bold text-center text-[clamp(1rem,2.6vw,2rem)] mt-2 lg:text-left'>Monto mínimo<br />de inversión</h5>
           </div>
         </div>
-        <Carousel images={images}/>
+        <div className="py-5 md:py-0"><Carousel images={images}/></div>
+        
       
       </section>
     )

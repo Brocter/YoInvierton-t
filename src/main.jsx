@@ -12,6 +12,7 @@ import Investments from "./views/Investments";
 import Disclaimer from "./views/Disclaimer";
 import Landing from "./views/Landing";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
