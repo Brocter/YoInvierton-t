@@ -49,7 +49,7 @@ const LogIn = () => {
     <section className="relative lg:flex">
       <div className='w-[50%] hidden lg:block '></div>
       <div className='lg:w-[50%] ml-auto lg:pt-[clamp(1rem,2.5vw,6rem)]'>
-      <div className={`flex flex-col px-4 gap-4 py-4 mx-auto animate-slide-in`}>
+      <div className={`flex flex-col px-4 gap-4 py-4 mx-auto animate-slide-in lg:px-8`}>
         {" "}
         <div className="flex justify-between items-center">
           <h2 className="text-[2.5rem] font-extrabold">Iniciar Sesión</h2>
