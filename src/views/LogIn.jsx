@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import InputForm from "../components/InputForm";
 import background from "../assets/edificioBackground.png";
 import { AuthGoogle } from "../components/Auth/AuthGoogle";
+import backgroundDesktop from "../assets/edificioDesktop.png"
 
 const LogIn = () => {
   const navigate = useNavigate();
@@ -45,8 +46,10 @@ const LogIn = () => {
   };
 
   return (
-    <section>
-      <div className={`flex flex-col px-4 gap-4 py-4 mx-auto animate-slide-in`}>
+    <section className="relative lg:flex">
+      <div className='w-[50%] hidden lg:block '></div>
+      <div className='lg:w-[50%] ml-auto lg:pt-[clamp(1rem,2.5vw,6rem)]'>
+      <div className={`flex flex-col px-4 gap-4 py-4 mx-auto animate-slide-in lg:px-8`}>
         {" "}
         <div className="flex justify-between items-center">
           <h2 className="text-[2.5rem] font-extrabold">Iniciar Sesión</h2>
@@ -78,11 +81,9 @@ const LogIn = () => {
         </button>
         <AuthGoogle signInGoogle={signInWithGoogle} />
       </div>
-      <img
-        className="object-contain w-[100%]"
-        src={background}
-        alt="background"
-      />
+      </div>
+      <img className="object-contain w-[100%] lg:hidden" src={background} alt="background" draggable="false"/>
+      <img className="object-contain hidden w-[100%] absolute lg:inline -z-10" src={backgroundDesktop} alt="background" draggable="false"/>
     </section>
   );
 };
