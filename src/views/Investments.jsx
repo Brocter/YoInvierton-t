@@ -24,19 +24,6 @@ const Investments = () => {
         className="lg:px-4 mx-auto bg-primarytBlue lg:flex lg:flex-row-reverse items-center justify-end max-w-[105rem] gap-4"
       >
         <div
-          id="ProjectVideo"
-          className="w-[100%] h-[15rem] lg:h-[24rem] max-w-[50rem]"
-        >
-          <iframe
-            width="100%"
-            height="100%"
-            src="https://www.youtube.com/embed/dWmvwOZisNg?si=GEQf1z7MMgsN40rp"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-        </div>
-        <div
           id="Description"
           className="pt-[2rem] lg:max-w-[35rem] lg:pt-0"
         >
@@ -96,6 +83,20 @@ const Investments = () => {
                 </p>
               </div>
             </div>
+        </div>
+
+        <div
+          id="ProjectVideo"
+          className="w-[100%] h-[15rem] lg:h-[24rem] max-w-[42.5rem]"
+        >
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/dWmvwOZisNg?si=GEQf1z7MMgsN40rp"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
         </div>
         
       </div>

@@ -14,7 +14,7 @@ const Step1 = (props) => {
             <h2 className='text-[2.5rem] font-extrabold'>Crear Cuenta</h2>
             <Link className="underline text-primaryBlue pt-4"to="/iniciar-sesion">Iniciar Sesión</Link>
             </div>
-            <InputForm type={"email"} title={"Email"} name={"email"} onChange={handleInputChange} placeholder={"ejemplo@gmail.com"}/>
+            <InputForm type={"email"} title={"Email"} name={"email"} onChange={handleInputChange} placeholder={"ejemplo@gmail.com"} height={4}/>
             <button className="bg-primaryBlue rounded-xl py-3 justify-center text-white text-[1.2rem] font-medium" onClick={onNext}>CREAR CUENTA</button>
         </div>
     )

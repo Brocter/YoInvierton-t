@@ -14,8 +14,8 @@ const Step3 = (props) => {
         <h2 className='text-[2.5rem] font-extrabold'>Crear Cuenta</h2>
         <Link className="underline text-primaryBlue pt-4"to="/iniciar-sesion">Iniciar Sesión</Link>
         </div>
-        <InputForm type="password" title="Contraseña*" name="password" onChange={handleInputChange} placeholder="●●●●●●●●●●●●●●"/>
-        <InputForm type="password" title="Repetí la contraseña*" name="password" onChange={handleInputChange} placeholder="●●●●●●●●●●●●●●"/>
+        <InputForm type="password" title="Contraseña*" name="password" onChange={handleInputChange} placeholder="●●●●●●●●●●●●●●" height={4}/>
+        <InputForm type="password" title="Repetí la contraseña*" name="password" onChange={handleInputChange} placeholder="●●●●●●●●●●●●●●" height={4}/>
         <button className="bg-primaryBlue rounded-xl py-3 justify-center text-white text-[1.2rem] font-medium" onClick={onSubmit}>CREAR CUENTA</button>
         <button className="bg-primaryLightBlue border-primaryBlue border rounded-xl py-3 justify-center text-primaryBlue text-[1.2rem] font-medium" onClick={onPrev}>ATRÁS</button>
         

@@ -12,6 +12,8 @@ import Investments from "./views/Investments";
 import Disclaimer from "./views/Disclaimer";
 import Landing from "./views/Landing";
 import Home from "./views/Home";
+import Admin from "./views/Admin";
+
 
 const router = createBrowserRouter([
   {
@@ -41,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "home",
         element: <Home />,
+      },
+      {
+        path: "admin",
+        element: <Admin />,
       },
     ],
   },

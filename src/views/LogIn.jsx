@@ -60,6 +60,7 @@ const LogIn = () => {
           name={"email"}
           onChange={handleInputChange}
           placeholder={"ejemplo@gmail.com"}
+          height={4}
         />
         <InputForm
           type="password"
@@ -67,6 +68,7 @@ const LogIn = () => {
           name="password"
           onChange={handleInputChange}
           placeholder="●●●●●●●●●●●●●●"
+          height={4}
         />
         <button
           className="bg-primaryBlue rounded-xl py-3 justify-center text-white text-[1.2rem] font-medium"
