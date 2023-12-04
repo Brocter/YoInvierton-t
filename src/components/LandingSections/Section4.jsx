@@ -8,8 +8,8 @@ export const Section4 = () => {
     return(
         <section className='py-[6rem] text-black md:text-center'>
         <div className='px-4'>
-        <h2 className='font-extrabold text-[clamp(3rem,4.2vw,3.6rem)] tracking-[-0.08rem] leading-[1.2] md:text-center'><span className='text-primaryBlue'>Oportunidades</span> de Inversión</h2>
-        <h4 className='text-[clamp(1.5rem,2vw,1.75rem)] font-bold leading-[1.2] py-6'>Crea tu cuenta. Elegi cuanto invertis. Crece en <b className='text-primaryBlue'>Dólares</b></h4>
+        <h2 className='font-extrabold text-[clamp(3rem,4.2vw,3.6rem)] text-gray-700 tracking-[-0.08rem] leading-[1.2] md:text-center'><span className='text-primaryBlue'>Oportunidades</span> de Inversión</h2>
+        <h4 className='text-[clamp(1.5rem,2vw,1.75rem)] font-bold leading-[1.2] py-6 text-gray-700'>Crea tu cuenta. Elegi cuanto invertis. Crece en <b className='text-primaryBlue'>Dólares</b></h4>
         </div>
         <div className="md:hidden">
         <OportunidadesCarousel/>
@@ -18,9 +18,9 @@ export const Section4 = () => {
           <OportunidadesCards/>
         </div>
         <div className='mx-auto flex justify-center lg:pt-4'>
-        <Link to="/inversiones" preventScrollReset={true} >
+        {/* <Link to="/inversiones" preventScrollReset={true} >
             <button className="bg-primaryLightBlue border-primaryBlue border rounded-xl py-3 text-primaryBlue text-[1.2rem] font-medium text-center px-[6rem] my-[2rem]">Ver más</button>
-        </Link>
+        </Link> */}
         </div>
       </section>
     )

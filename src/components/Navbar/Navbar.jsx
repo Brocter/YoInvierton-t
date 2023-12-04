@@ -36,10 +36,10 @@ function Navbar() {
         {hamburger}
       </div>
       <div className="hidden lg:flex justify-between items-center gap-[6rem] font-[400] text-[1.2rem] xl:text-[clamp(1.2rem,1.5vw,1.5rem)] ">
-        <a href="https://medium.com/@yoinvierto" className="hover:text-primaryBlue cursor-pointer">Novedades</a>
-        <Link to="/inversiones">
-        <p className="hover:text-primaryBlue cursor-pointer">Oportunidades</p>
-        </Link>
+        <a href="https://medium.com/@yoinvierto" className="hover:text-primaryBlue cursor-pointer text-primaryBlue font-medium">Novedades</a>
+        {/* <Link to="/inversiones">
+        <p className="hover:text-primaryBlue cursor-pointer text-primaryBlue font-medium">Oportunidades</p>
+        </Link> */}
         <ButtonIniciarSesion/>
       </div>
       </div>

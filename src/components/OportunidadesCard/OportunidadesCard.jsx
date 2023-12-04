@@ -5,9 +5,9 @@ export const OportunidadesCard = ({ cardData }) => {
   const {
     departamento,
     background,
-    porcentaje,
     rendimiento,
     minimoInversion,
+    porcentaje,
     inversionMax,
     totalInvertido,
     type,
@@ -113,7 +113,7 @@ export const OportunidadesCard = ({ cardData }) => {
               Capital fondeado
             </p>
             <div className="bg-primaryLightBlue rounded-full w-full">
-              <div className={`bg-primaryBlue w-[15%] pt-3 rounded-full`}></div>
+            <div className={`bg-primaryBlue pt-3 rounded-full`} style={{ width: `${porcentaje}%`}}></div>
             </div>
             <div className="flex justify-between text-[0.8rem] pt-1">
               <p>
@@ -142,7 +142,7 @@ export const OportunidadesCard = ({ cardData }) => {
             <div className="text-[1.2rem] font-medium">Tenencia</div>
             {cardState == "default" && (
               <div className="flex flex-row pr-[4%] items-end">
-                <p className="font-bold text-[1.5rem] text-primaryBlue">1300</p>
+                <p className="font-bold text-[1.5rem] text-primaryBlue">1000</p>
                 <p>/</p>
                 <p>12m2</p>
               </div>
