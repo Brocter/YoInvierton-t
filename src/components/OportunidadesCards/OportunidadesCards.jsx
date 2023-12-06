@@ -1,9 +1,9 @@
 import { OportunidadesCard } from "../OportunidadesCard/OportunidadesCard";
-import background from "./../../assets/edificioBackground.png";
+import { foto6 } from "../../assets/carouselImages/carouselImages";
 
 const cardData = [
   {
-    background,
+    background: foto6,
     departamento: "Departamento 7°A",
     rendimiento: "10%",
     minimoInversion: "1.000,00",
@@ -12,7 +12,7 @@ const cardData = [
     inversionMax: "102.216",
   },
   {
-    background,
+    background: foto6,
     departamento: "Departamento 7°E",
     rendimiento: "10%",
     minimoInversion: "1.000,00",
@@ -21,7 +21,7 @@ const cardData = [
     inversionMax: "72.600",
   },
   {
-    background,
+    background: foto6,
     departamento: "Departamento 9°C",
     rendimiento: "22%",
     minimoInversion: "1.000,00",
