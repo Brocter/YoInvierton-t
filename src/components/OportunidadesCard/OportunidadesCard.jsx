@@ -120,7 +120,7 @@ export const OportunidadesCard = ({ cardData }) => {
                 U$S {totalInvertido} /{" "}
                 <b className="text-primaryBlue">{inversionMax}</b>
               </p>
-              <p>{porcentaje} financiamiento alcanzado</p>
+              <p>{porcentaje} de financiamiento alcanzado</p>
             </div>
           </div>
           <a

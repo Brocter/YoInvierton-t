@@ -69,7 +69,7 @@ export const OportunidadesCardCarousel = (props) => {
           </div>
           <div className='flex justify-between text-[0.8rem] pt-1'>
           <p>U$S {totalInvertido} / <b className='text-primaryBlue'>{inversionMax}</b></p>
-          <p>{porcentaje} financiamiento alcanzado</p>
+          <p>{porcentaje} de financiamiento alcanzado</p>
           </div>
           </div>
           <button className='bg-primaryBlue text-white w-full rounded-xl py-[0.6rem] text-[1rem]'>QUIERO INVERTIR</button>
