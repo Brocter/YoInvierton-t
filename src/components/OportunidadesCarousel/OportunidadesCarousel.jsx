@@ -7,15 +7,35 @@ import PrevArrowButton from "../PrevArrowButton/PrevArrowButton";
 
 const range = [-1, 0, 1];
 
-const cardData = {
-  background,
-  departamento: "Departamento 9°",
-  rendimiento: "8%",
-  minimoInversion: "1.300,00",
-  porcentaje: "15%",
-  totalInvertido: "1000",
-  inversionMax: "50.000",
-};
+const cardData = [
+  {
+    background,
+    departamento: "Departamento 7°A",
+    rendimiento: "10%",
+    minimoInversion: "1.000,00",
+    porcentaje: 58.3,
+    totalInvertido: "59.600",
+    inversionMax: "102.216",
+  },
+  {
+    background,
+    departamento: "Departamento 7°E",
+    rendimiento: "10%",
+    minimoInversion: "1.000,00",
+    porcentaje: 0,
+    totalInvertido: "0%",
+    inversionMax: "72.600",
+  },
+  {
+    background,
+    departamento: "Departamento 9°C",
+    rendimiento: "22%",
+    minimoInversion: "1.000,00",
+    porcentaje: 14.7,
+    totalInvertido: "11876",
+    inversionMax: "80.769",
+  }
+];
 
 const transition = {
   type: "spring",
@@ -73,7 +93,7 @@ const OportunidadesCarousel = () => {
             onDragEnd={handleEndDrag}
             index={rangeValue + index}
             active={rangeValue === 0}
-            cardData={cardData}
+            cardData={cardData[Math.abs(index % 3)]}
           />
         );
       })}
