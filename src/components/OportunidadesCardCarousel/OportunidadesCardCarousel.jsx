@@ -64,12 +64,12 @@ export const OportunidadesCardCarousel = (props) => {
           <div className='pb-4'>
             <p className='font-bold text-primaryBlue text-[1rem] pb-2'>Capital fondeado</p>
           <div className='bg-primaryLightBlue rounded-full w-full'>
-            <div className={`bg-primaryBlue w-[15%] pt-3 rounded-full`}>
+            <div className={`bg-primaryBlue pt-3 rounded-full`} style={{ width: `${porcentaje}%`}}>
             </div>
           </div>
           <div className='flex justify-between text-[0.8rem] pt-1'>
           <p>U$S {totalInvertido} / <b className='text-primaryBlue'>{inversionMax}</b></p>
-          <p>{porcentaje} de financiamiento alcanzado</p>
+          <p>{porcentaje}% de financiamiento alcanzado</p>
           </div>
           </div>
           <button className='bg-primaryBlue text-white w-full rounded-xl py-[0.6rem] text-[1rem]'>QUIERO INVERTIR</button>

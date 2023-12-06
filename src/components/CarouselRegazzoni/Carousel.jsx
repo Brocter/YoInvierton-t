@@ -46,7 +46,7 @@ const Carousel = ({ images }) => {
   };
 
   return (
-    <div className="mx-auto py-[clamp(11rem,38vw,20rem)] flex relative justify-center items-center w-[100vw] h-[50vh] max-w-[58rem]">
+    <div className="mx-auto py-[clamp(11rem,38vw,20rem)] flex relative justify-center items-center w-[100vw] lg:w-[35vw] h-[50vh] max-w-[58rem]">
       <AnimatePresence initial={false} custom={direction}>
         <motion.img
           className="absolute max-h-[30rem] cursor-grab md:rounded-2xl"
