@@ -5,11 +5,12 @@ import UserCard from "../components/UserCard/UserCard";
 import InputForm from "../components/InputForm";
 import arrowDown from "../assets/icons/arrow_down.png";
 import Dropdown from "../components/Dropdown/Dropdown";
+import { getAllUsers } from "../utils/firebase";
 
 const Admin = () => {
   const navigate = useNavigate();
-  const [userData, setUserData] = useState({});
-  const [cardSelected, setcardSelected] = useState("none")
+  const [allUserData, setAllUserData] = useState([]);
+  const [cardSelected, setcardSelected] = useState("none");
   const [cardData, setcardData] = useState({
     background,
     departamento: "Departamento 9°",
@@ -22,6 +23,10 @@ const Admin = () => {
 
   useEffect(() => {
     console.log("view init");
+    getAllUsers().then((data) => {
+      console.log("ALLUSERS", data)
+      setAllUserData(Object.values(data));
+    });
     //Retrieve user-associated data from filestorage
   }, []);
 
@@ -32,20 +37,21 @@ const Admin = () => {
   const dropdownData = [
     {
       value: "Antiguedad",
-      text:"Antiguedad",
-    },{
+      text: "Antiguedad",
+    },
+    {
       value: "Alfabetico",
-      text:"Alfabetico",
+      text: "Alfabetico",
     },
     {
       value: "Inversión",
-      text:"Inversión",
-    }
-  ]
+      text: "Inversión",
+    },
+  ];
 
-  const handleCardSelected = (index)=> {
-    setcardSelected(index)
-  }
+  const handleCardSelected = (index) => {
+    setcardSelected(index);
+  };
 
   return (
     <section id="main" className="flex flex-col p-8  h-[100vh] w-full">
@@ -55,19 +61,30 @@ const Admin = () => {
       >
         Usuarios
       </div>
-      <div id="filter" className="flex flex-row mt-8">
-        <div id="search" className="h-auto">
-          <InputForm height={1.5} placeholder={"Buscar por nombre"} />
+      <div className="flex flex-row justify-between">
+        <div id="filter" className="flex flex-row mt-8">
+          <div id="search" className="h-auto">
+            <InputForm height={1.5} placeholder={"Buscar por nombre"} />
+          </div>
+          <div id="SortButton" className="ml-4">
+            <Dropdown options={dropdownData} width={8} type={"filter"} />
+          </div>
         </div>
-        <div id="SortButton" className="ml-4">
-        <Dropdown options={dropdownData} width={8} type={"filter"}/>
+        <div>
+        <Link to="/admin/cargar" preventScrollReset={true} >
+          <button className='flex p-1 bg-primaryBlue justify-center items-center px-5 rounded-md text-white font-[500] text-5 mr-[1.5rem]'>Cargar Propiedades</button>
+        </Link>
         </div>
       </div>
       <div id="userList" className="mt-8">
-        {Array(7)
-          .fill(true)
-          .map((item, index) => (
-           <UserCard key={index} index={index} handleCardSelected={handleCardSelected} cardSelected = {cardSelected}/>
+        {allUserData.map((item, index) => (
+            <UserCard
+              key={index}
+              data={item}
+              index={index}
+              handleCardSelected={handleCardSelected}
+              cardSelected={cardSelected}
+            />
           ))}
       </div>
     </section>
@@ -75,4 +92,3 @@ const Admin = () => {
 };
 
 export default Admin;
-

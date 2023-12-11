@@ -8,15 +8,16 @@ import Dropdown from "../components/Dropdown/Dropdown";
 
 const Home = () => {
   const navigate = useNavigate();
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState();
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     //check if user is already logged.
     if (user != null) {
-      console.log(user);
+      console.log("uwu")
       getUserData(user.uid).then((data) => {
-        console.log("user data", data);
+        console.log("datadata", data)
+        setUserData(data)
       });
     } else {
       //Otherwise return to Landing Page
@@ -43,6 +44,7 @@ const Home = () => {
   });
 
   return (
+    
     <section id="main" className="flex flex-col  p-8  h-[100vh] w-full">
       <div
         id="overview"
@@ -64,8 +66,7 @@ const Home = () => {
             </div>
             <div id="text" className="flex flex-col w-full">
               <p className="text-[1rem] mb-[-0.6rem] lg:mb-[-1rem] w-full">
-                ¡Hola{" "}
-                <span className="text-primaryBlue font-bold">Joaquín!</span>
+                ¡Hola <span className="text-primaryBlue font-bold"> {userData?.fullName["name"]}</span>!
               </p>
               <p className="font-bold text-[2rem] lg:text-[4rem] mb-[-0.6rem] text-primaryBlue">
                 1000 USD

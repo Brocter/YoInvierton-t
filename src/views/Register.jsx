@@ -57,22 +57,20 @@ const Register = () => {
           .then((userCredential) => {
               // Signed in
               const user = userCredential.user;
-              console.log(user);
+              localStorage.setItem("user", JSON.stringify(userCredential.user))
 
               //Create entry in the Firestore
               createUser(formData, user["uid"]).then((response)=> {
-                console.log("Error creating user in RealTime Database: ", response)
+                if (response != undefined){
+                  console.log("Error creating user in RealTime Database: ", response)
+                }
+                navigate("/home")
               })
-
-
-              navigate("/home")
-              // ...
           })
           .catch((error) => {
               const errorCode = error.code;
               const errorMessage = error.message;
               console.log(errorCode, errorMessage);
-              // ..
           });
         }
 

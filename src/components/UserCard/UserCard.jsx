@@ -3,8 +3,9 @@ import React, { useState, useEffect } from "react";
 import { OportunidadesCard } from "../OportunidadesCard/OportunidadesCard";
 import background from "../../assets/edificioBackground.png";
 
-const UserCard = ({ handleCardSelected, index, cardSelected }) => {
+const UserCard = ({ handleCardSelected,data, index, cardSelected }) => {
   const [cardState, setcardState] = useState("closed");
+  const [carData, setCardata] = useState(data);
 
   useEffect(()=> {
     if (index != cardSelected){
@@ -42,8 +43,8 @@ const UserCard = ({ handleCardSelected, index, cardSelected }) => {
       >
         <div>
           <div>
-            <p className="text-primaryBlue font-bold">Nombre Completo</p>
-            <p>DNI: 41.458.988</p>
+            <p className="text-primaryBlue font-bold">{carData.fullName?.name + " " + carData.fullName?.surname}</p>
+            <p>DNI: {carData["DNI"]}</p>
           </div>
 
           <div className="mt-2">

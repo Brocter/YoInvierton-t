@@ -13,6 +13,8 @@ import Disclaimer from "./views/Disclaimer";
 import Landing from "./views/Landing";
 import Home from "./views/Home";
 import Admin from "./views/Admin";
+import UploadInvestments from "./views/AddInvestments";
+
 
 
 
@@ -48,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "admin",
         element: <Admin />,
+      },
+      {
+        path: "admin/cargar",
+        element: <UploadInvestments />,
       },
     ],
   },
