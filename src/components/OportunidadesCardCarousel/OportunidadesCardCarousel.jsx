@@ -1,9 +1,32 @@
+import React, { useState, useEffect } from "react";
+import { retrieveImage, updateInvestment } from "../../utils/firebase";
 import { motion } from "framer-motion";
 
-export const OportunidadesCardCarousel = (props) => {
+export const OportunidadesCardCarousel = ({x, onDragEnd, index, active, topInvestments}) => {
 
-  const {x, onDragEnd, index, active, cardData} = props;
-  const {departamento, background, porcentaje, rendimiento, minimoInversion, inversionMax, totalInvertido} = cardData;
+  const {
+    comprometida,
+    m2Totales,
+    minima,
+    necesaria,
+    piso,
+    status,
+    type,
+    unidad,
+    img,
+    estimatedProfit,
+  } = topInvestments;
+
+  const [image, setImage] = useState();
+
+
+  useEffect(() => {
+    retrieveImage(img?.path_).then((url) => {
+      console.log("AHHHHHHHHHH", url);
+      setImage(url);
+    });
+  }, [topInvestments]);
+
   const variants = {
     center: (active) => {
       return {
@@ -30,11 +53,11 @@ export const OportunidadesCardCarousel = (props) => {
         }}
         className='border mt-8 border-primaryLightBlue rounded-b-xl rounded-tr-[1.9rem] shadow-lg shadow-primaryLightBlue w-[100%] absolute overflow-hidden'>
         <div className='px-4 py-3'>  
-        <h5 className='text-primaryBlue font-bold text-[1.2rem]'>{ departamento }</h5>
+        <h5 className='text-primaryBlue font-bold text-[1.2rem]'>Departamento {piso + unidad}</h5>
         <h6 className='text-[1rem] text-black'>Jardin Regazzoni</h6>
         </div>
         <p className='bg-primaryBlue text-center text-white py-1 text-[0.84rem]'>Proyecto activo - Cobro sobre venta</p>
-        <img className="object-contain w-[100%]" src={background} alt="background" draggable="false"/>
+        <img className="object-contain w-[100%]" src={image} alt="background" draggable="false"/>
         <div className='px-4 mx-auto pb-8'>
           <div className='py-3'>
           <div className='flex justify-between items-center'>
@@ -47,7 +70,7 @@ export const OportunidadesCardCarousel = (props) => {
             </svg>
             <p className='text-[0.84rem] pl-1'>Rendimiento anual estimado:</p>
             </div>
-            <h6 className='text-primaryBlue font-bold'>{rendimiento}</h6>
+            <h6 className='text-primaryBlue font-bold'>{estimatedProfit}</h6>
           </div>
           <div className='flex justify-between items-center'>
             <div className='flex items-center justify-center'>
@@ -58,18 +81,18 @@ export const OportunidadesCardCarousel = (props) => {
             </svg>
             <p className='text-[0.84rem] pl-1'>Mínimo de inversión</p>
             </div>
-            <h6 className='text-primaryBlue'>U$S {minimoInversion}</h6>
+            <h6 className='text-primaryBlue'>U$S {minima}</h6>
           </div>
           </div>
           <div className='pb-4'>
             <p className='font-bold text-primaryBlue text-[1rem] pb-2'>Capital fondeado</p>
           <div className='bg-primaryLightBlue rounded-full w-full'>
-            <div className={`bg-primaryBlue pt-3 rounded-full`} style={{ width: `${porcentaje}%`}}>
+            <div className={`bg-primaryBlue pt-3 rounded-full`} style={{ width: `${(comprometida / necesaria) * 100}%`}}>
             </div>
           </div>
           <div className='flex justify-between text-[0.8rem] pt-1'>
-          <p>U$S {totalInvertido} / <b className='text-primaryBlue'>{inversionMax}</b></p>
-          <p>{porcentaje}% de financiamiento alcanzado</p>
+          <p>U$S {comprometida} / <b className='text-primaryBlue'>{necesaria}</b></p>
+          <p>{parseInt((comprometida / necesaria) * 100)}% de financiamiento alcanzado</p>
           </div>
           </div>
           <button className='bg-primaryBlue text-white w-full rounded-xl py-[0.6rem] text-[1rem]'>QUIERO INVERTIR</button>

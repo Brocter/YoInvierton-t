@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { OportunidadesCard } from "../components/OportunidadesCard/OportunidadesCard";
 import background from "../assets/edificioBackground.png";
+import { retrieveInvestments } from "../utils/firebase";
 
 const Investments = () => {
+  const [investmentList, setInvestmentList] = useState();
+
   useEffect(() => {
     console.log("bringing data");
+    retrieveInvestments(setInvestmentList);
   }, []);
 
-  const [cardData, setcardData] = useState({
-    background,
-    departamento: "Departamento 9°",
-    rendimiento: "8%",
-    minimoInversion: "1.300,00",
-    porcentaje: "15%",
-    totalInvertido: "1000",
-    inversionMax: "50.000",
-  });
+  useEffect(() => {
+    console.log("PROPERTIES", investmentList);
+  }, [investmentList]);
 
   return (
     <section className="lg:mt-4 lg:px-4">
@@ -58,7 +56,10 @@ const Investments = () => {
                 allowfullscreen
               ></iframe>
             </div>
-            <div id="Text" className=" flex flex-col w-full h-auto px-[1.2rem] mt-[1rem]">
+            <div
+              id="Text"
+              className=" flex flex-col w-full h-auto px-[1.2rem] mt-[1rem]"
+            >
               <h2 className="font-bold text-[clamp(2.4rem,5vw,3.8rem)] text-primaryBlue">
                 Jardin Regazzoni
               </h2>
@@ -112,19 +113,17 @@ const Investments = () => {
       </div>
       <div
         id="ProjectsSection"
-        className="px-4 pt-8 max-w-[105rem] mx-auto mt-6 lg:mt-12"
+        className="px-4 pt-4 max-w-[105rem] mx-auto mt-6 lg:mt-12"
       >
         <h6 className="text-[clamp(1.5rem,2vw,1.75rem)] font-bold leading-[1.2] text-primaryBlue">
           Oportunidades
         </h6>
         <div
           id="list"
-          className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+          className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-4"
         >
-          {Array(7)
-            .fill(true)
-            .map((item, index) => (
-              <OportunidadesCard cardData={cardData} />
+          {investmentList && Object.values(investmentList).map((item, index) => (
+              <OportunidadesCard InvestmentData={item} key={index} mode={"default"} />
             ))}
         </div>
       </div>

@@ -1,10 +1,10 @@
-
+import { useEffect, useState, useRef } from "react";
 import OportunidadesCards from '../OportunidadesCards/OportunidadesCards';
 import OportunidadesCarousel from '../OportunidadesCarousel/OportunidadesCarousel';
 import { Link } from 'react-router-dom';
 
 
-export const Section4 = () => {
+export const Section4 = ({topInvestments}) => {
     return(
         <section className='py-[6rem] text-black md:text-center'>
         <div className='px-4'>
@@ -12,15 +12,15 @@ export const Section4 = () => {
         <h4 className='text-[clamp(1.5rem,2vw,1.75rem)] font-bold leading-[1.2] py-6 text-gray-700'>Crea tu cuenta. Elegi cuanto invertis. Crece en <b className='text-primaryBlue'>Dólares</b></h4>
         </div>
         <div className="md:hidden">
-        <OportunidadesCarousel/>
+        {topInvestments && <OportunidadesCarousel topInvestments={topInvestments}/>}
         </div>
         <div className='hidden md:block px-4 mx-auto'>
-          <OportunidadesCards/>
+        {topInvestments && <OportunidadesCards topInvestments={topInvestments}/>}
         </div>
         <div className='mx-auto flex justify-center lg:pt-4'>
-        {/* <Link to="/inversiones" preventScrollReset={true} >
+        <Link to="/inversiones" preventScrollReset={true} >
             <button className="bg-primaryLightBlue border-primaryBlue border rounded-xl py-3 text-primaryBlue text-[1.2rem] font-medium text-center px-[6rem] my-[2rem]">Ver más</button>
-        </Link> */}
+        </Link>
         </div>
       </section>
     )

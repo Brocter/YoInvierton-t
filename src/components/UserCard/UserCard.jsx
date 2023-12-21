@@ -1,17 +1,36 @@
 import arrowDown from "../../assets/icons/arrow_down.png";
 import React, { useState, useEffect } from "react";
-import { OportunidadesCard } from "../OportunidadesCard/OportunidadesCard";
+import { AddInvestmentCard } from "../AddInvestmentCard/AddInvestmentCard";
 import background from "../../assets/edificioBackground.png";
+import { OportunidadesCard } from "../OportunidadesCard/OportunidadesCard";
 
-const UserCard = ({ handleCardSelected,data, index, cardSelected }) => {
+const UserCard = ({
+  handleCardSelected,
+  user,
+  index,
+  cardSelected,
+  allInvestments,
+  uid,
+}) => {
   const [cardState, setcardState] = useState("closed");
-  const [carData, setCardata] = useState(data);
+  const [userData, setUserData] = useState(user);
 
-  useEffect(()=> {
-    if (index != cardSelected){
+  const [cardData, setcardData] = useState({
+    background,
+    departamento: "Departamento 9°",
+    rendimiento: "8%",
+    minimoInversion: "1.300,00",
+    porcentaje: "15%",
+    totalInvertido: "1000",
+    inversionMax: "50.000",
+    type: "admin_card",
+  });
+
+  useEffect(() => {
+    if (index != cardSelected) {
       setcardState("closed");
     }
-  }, [cardSelected])
+  }, [cardSelected]);
 
   const handleClick = (e) => {
     handleCardSelected(index);
@@ -24,17 +43,6 @@ const UserCard = ({ handleCardSelected,data, index, cardSelected }) => {
     }
   };
 
-  const [cardData, setcardData] = useState({
-    background,
-    departamento: "Departamento 9°",
-    rendimiento: "8%",
-    minimoInversion: "1.300,00",
-    porcentaje: "15%",
-    totalInvertido: "1000",
-    inversionMax: "50.000",
-    type:"admin_card"
-  });
-
   return (
     <div className="flex-col">
       <div
@@ -43,8 +51,10 @@ const UserCard = ({ handleCardSelected,data, index, cardSelected }) => {
       >
         <div>
           <div>
-            <p className="text-primaryBlue font-bold">{carData.fullName?.name + " " + carData.fullName?.surname}</p>
-            <p>DNI: {carData["DNI"]}</p>
+            <p className="text-[1.3rem] text-primaryBlue font-bold">
+              {userData.fullName?.name + " " + userData.fullName?.surname}
+            </p>
+            <p>DNI: {userData["DNI"]}</p>
           </div>
 
           <div className="mt-2">
@@ -52,7 +62,11 @@ const UserCard = ({ handleCardSelected,data, index, cardSelected }) => {
           </div>
         </div>
         <div>
-          <div className={`ml-[-2rem] mt-[0.4rem] ${cardState == "open" ? "rotate-90" : ""}`}>
+          <div
+            className={`ml-[-2rem] mt-[0.4rem] ${
+              cardState == "open" ? "rotate-90" : ""
+            }`}
+          >
             <img src={arrowDown} width="50rem" alt="Arrow Down" />
           </div>
         </div>
@@ -60,13 +74,18 @@ const UserCard = ({ handleCardSelected,data, index, cardSelected }) => {
       {cardState == "open" && (
         <div
           id="list"
-          className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+          className="grid md:grid-cols-2 lg:grid-cols-3 w-[100%] xl:grid-cols-4 p-8 gap-4 content-center"
         >
-          {Array(7)
-            .fill(true)
-            .map((item, index) => (
-              <OportunidadesCard key={index} cardData={cardData} />
-            ))}
+          <AddInvestmentCard allInvestments={allInvestments} uid={uid} />
+
+          {user["investments"] && Object.keys(user["investments"]).map((key) => (
+            <OportunidadesCard
+              mode={"admin_card"}
+              InvestmentData={allInvestments[key]}
+              userStake={user["investments"][key]} 
+              uid = {uid}
+            />
+          ))}
         </div>
       )}
     </div>

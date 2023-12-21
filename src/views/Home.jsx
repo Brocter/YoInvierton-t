@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { getUserData } from "../utils/firebase";
+import { getUserData, retrieveInvestments} from "../utils/firebase";
 import apartment from "../../src/assets/apartment.png";
 import background from "../assets/edificioBackground.png";
 import { OportunidadesCard } from "../components/OportunidadesCard/OportunidadesCard";
@@ -9,22 +9,33 @@ import Dropdown from "../components/Dropdown/Dropdown";
 const Home = () => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState();
+  const [investmentList, setInvestmentList] = useState();
+  const [portfolioValue, setPortfolioValue] = useState();
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     //check if user is already logged.
     if (user != null) {
-      console.log("uwu")
+      console.log("uwu", user)
       getUserData(user.uid).then((data) => {
-        console.log("datadata", data)
         setUserData(data)
       });
+      retrieveInvestments(setInvestmentList)
     } else {
       //Otherwise return to Landing Page
       navigate("/");
     }
     //Retrieve user-associated data from filestorage
   }, []);
+
+  useEffect(() => {
+    //Calculate Portfolio Value
+    let portfolioValue = 0
+    userData && Object.keys(userData["investments"]).forEach((investment) => {
+      portfolioValue += userData["investments"][investment];
+    })
+    setPortfolioValue(portfolioValue)
+  }, [userData]);
 
   const dropdownData = [
     {
@@ -33,15 +44,6 @@ const Home = () => {
     },
   ];
 
-  const [cardData, setcardData] = useState({
-    background,
-    departamento: "Departamento 9°",
-    rendimiento: "8%",
-    minimoInversion: "1.300,00",
-    porcentaje: "15%",
-    totalInvertido: "1000",
-    inversionMax: "50.000",
-  });
 
   return (
     
@@ -69,14 +71,14 @@ const Home = () => {
                 ¡Hola <span className="text-primaryBlue font-bold"> {userData?.fullName["name"]}</span>!
               </p>
               <p className="font-bold text-[2rem] lg:text-[4rem] mb-[-0.6rem] text-primaryBlue">
-                1000 USD
+                {portfolioValue} USD
               </p>
               <p className="font-medium mt-[0.1rem] lg:text-[2rem]">
                 Valor del Portfolio
               </p>
             </div>
           </div>
-          <div
+          {false && <div
             id="profitAnnouncement"
             className="flex flex-col w-[100%] lg:w-[25%] h-auto lg:h-[16rem] border rounded-md bg-primaryBlue p-5 lg:p-6 align-center lg:min-w-[30rem]"
           >
@@ -95,7 +97,7 @@ const Home = () => {
             >
               <button className="text-center w-[100%]">Retirar</button>
             </Link>
-          </div>
+          </div>}
         </div>
       </div>
       <div id="investmentList" className="flex flex-col pl-4pt-[0.5rem]">
@@ -105,12 +107,10 @@ const Home = () => {
         <div className="mt-4 w-[20rem]">
           <Dropdown options={dropdownData} width={8} type={"dropdown"} />
         </div>
-        <div id="list" className="grid lg:grid-cols-3 gap-4 xl:grid-cols-4">
-          {Array(7)
-            .fill(true)
-            .map((item, index) => (
-              <OportunidadesCard cardData={cardData} />
-            ))}
+        <div id="list" className="grid lg:grid-cols-3 gap-4 xl:grid-cols-4 mt-8">
+        {userData && investmentList && Object.keys(userData["investments"]).map((investment) => (
+          <OportunidadesCard InvestmentData={investmentList[investment]} uid={userData["uid"]} userStake={userData["investments"][investment]} mode="default" />
+        ))}
         </div>
       </div>
     </section>

@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import background from "../assets/edificioBackground.png";
 import UserCard from "../components/UserCard/UserCard";
 import InputForm from "../components/InputForm";
-import arrowDown from "../assets/icons/arrow_down.png";
+import { retrieveInvestments } from "../utils/firebase";
 import Dropdown from "../components/Dropdown/Dropdown";
 import { getAllUsers } from "../utils/firebase";
 
@@ -11,6 +11,7 @@ const Admin = () => {
   const navigate = useNavigate();
   const [allUserData, setAllUserData] = useState([]);
   const [cardSelected, setcardSelected] = useState("none");
+  const [investmentObj, setInvestmentObj] = useState({})
   const [cardData, setcardData] = useState({
     background,
     departamento: "Departamento 9°",
@@ -23,16 +24,11 @@ const Admin = () => {
 
   useEffect(() => {
     console.log("view init");
-    getAllUsers().then((data) => {
-      console.log("ALLUSERS", data)
-      setAllUserData(Object.values(data));
-    });
-    //Retrieve user-associated data from filestorage
+    //Get all users
+    getAllUsers(setAllUserData)
+    retrieveInvestments(setInvestmentObj);
+    //Bring available investment options
   }, []);
-
-  // useEffect(()=> {
-  //   console.log(cardSelected)
-  // }, [cardSelected])
 
   const dropdownData = [
     {
@@ -53,6 +49,10 @@ const Admin = () => {
     setcardSelected(index);
   };
 
+  const filterHandler = () => {
+    console.log("searching for...")
+  };
+
   return (
     <section id="main" className="flex flex-col p-8  h-[100vh] w-full">
       <div
@@ -64,7 +64,7 @@ const Admin = () => {
       <div className="flex flex-row justify-between">
         <div id="filter" className="flex flex-row mt-8">
           <div id="search" className="h-auto">
-            <InputForm height={1.5} placeholder={"Buscar por nombre"} />
+            <InputForm height={1.5} placeholder={"Buscar por nombre"} onChange={filterHandler} />
           </div>
           <div id="SortButton" className="ml-4">
             <Dropdown options={dropdownData} width={8} type={"filter"} />
@@ -77,13 +77,15 @@ const Admin = () => {
         </div>
       </div>
       <div id="userList" className="mt-8">
-        {allUserData.map((item, index) => (
+      {Object.entries(allUserData).map(([uid, user], index) => (
             <UserCard
               key={index}
-              data={item}
+              uid={uid}
+              user={user}
               index={index}
               handleCardSelected={handleCardSelected}
               cardSelected={cardSelected}
+              allInvestments = {investmentObj}
             />
           ))}
       </div>

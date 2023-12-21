@@ -1,41 +1,14 @@
 import { OportunidadesCard } from "../OportunidadesCard/OportunidadesCard";
 import { foto6 } from "../../assets/carouselImages/carouselImages";
+import { useEffect, useState, useRef } from "react";
 
-const cardData = [
-  {
-    background: foto6,
-    departamento: "Departamento 7°A",
-    rendimiento: "10%",
-    minimoInversion: "1.000,00",
-    porcentaje: 58.3,
-    totalInvertido: "59.600",
-    inversionMax: "102.216",
-  },
-  {
-    background: foto6,
-    departamento: "Departamento 7°E",
-    rendimiento: "10%",
-    minimoInversion: "1.000,00",
-    porcentaje: 0,
-    totalInvertido: "0%",
-    inversionMax: "72.600",
-  },
-  {
-    background: foto6,
-    departamento: "Departamento 9°C",
-    rendimiento: "22%",
-    minimoInversion: "1.000,00",
-    porcentaje: 14.7,
-    totalInvertido: "11876",
-    inversionMax: "80.769",
-  }
-];
 
-const OportunidadesCards = () => {
+const OportunidadesCards = ({topInvestments}) => {
+
   return (
     <div className="grid grid-cols-3 gap-4 max-w-[80rem] mx-auto xl:gap-6">
-      {[...Array(3)].map((_, i) => (
-        <OportunidadesCard key={i} cardData={cardData[i]} />
+      {topInvestments && topInvestments.map((investment, i) => (
+        <OportunidadesCard key={i} InvestmentData={investment} mode={"default"} />
       ))}
     </div>
   );

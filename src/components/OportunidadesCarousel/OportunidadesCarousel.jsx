@@ -7,42 +7,12 @@ import PrevArrowButton from "../PrevArrowButton/PrevArrowButton";
 
 const range = [-1, 0, 1];
 
-const cardData = [
-  {
-    background,
-    departamento: "Departamento 7°A",
-    rendimiento: "10%",
-    minimoInversion: "1.000,00",
-    porcentaje: 58.3,
-    totalInvertido: "59.600",
-    inversionMax: "102.216",
-  },
-  {
-    background,
-    departamento: "Departamento 7°E",
-    rendimiento: "10%",
-    minimoInversion: "1.000,00",
-    porcentaje: 0,
-    totalInvertido: "0%",
-    inversionMax: "72.600",
-  },
-  {
-    background,
-    departamento: "Departamento 9°C",
-    rendimiento: "22%",
-    minimoInversion: "1.000,00",
-    porcentaje: 14.7,
-    totalInvertido: "11876",
-    inversionMax: "80.769",
-  }
-];
-
 const transition = {
   type: "spring",
   bounce: 0,
 };
 
-const OportunidadesCarousel = () => {
+const OportunidadesCarousel = ({topInvestments}) => {
   const x = useMotionValue(0);
   const containerRef = useRef(null);
   const [index, setIndex] = useState(0);
@@ -75,11 +45,11 @@ const OportunidadesCarousel = () => {
     return setIndex(index - 1);
   }
 
-
   useEffect(() => {
     const controls = animate(x, calculateNewX(), transition);
     return controls.stop;
   }, [index]);
+
 
 
   return (
@@ -93,7 +63,7 @@ const OportunidadesCarousel = () => {
             onDragEnd={handleEndDrag}
             index={rangeValue + index}
             active={rangeValue === 0}
-            cardData={cardData[Math.abs(index % 3)]}
+            topInvestments={topInvestments[Math.abs(index % 3)]}
           />
         );
       })}
