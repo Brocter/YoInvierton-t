@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import InputForm from "../../components/InputForm";
 import { retrieveImage, updateInvestment } from "../../utils/firebase";
+import crossIcon from "../../assets/icons/Cross.png";
 
 export const OportunidadesCard = ({ InvestmentData, userStake, mode, uid }) => {
   const {
@@ -18,10 +19,12 @@ export const OportunidadesCard = ({ InvestmentData, userStake, mode, uid }) => {
   const [cardState, setcardState] = useState("overview");
   const [image, setImage] = useState();
   const [modifyAmount, setModifyAmount] = useState(0);
+  const [investmentName, setInvestmentName] = useState();
 
   useEffect(() => {
     console.log("GENERATEEED", InvestmentData);
     console.log("userStake", userStake);
+    setInvestmentName(InvestmentData["piso"] + InvestmentData["unidad"]);
     retrieveImage(img?.path_).then((url) => {
       console.log("download url", url);
       setImage(url);
@@ -40,19 +43,26 @@ export const OportunidadesCard = ({ InvestmentData, userStake, mode, uid }) => {
     setModifyAmount(parseInt(e.target.value));
   };
 
+  const handleDelete = () => {
+    console.log("delete card", uid , investmentName)
+    updateInvestment(uid,investmentName, "delete")
+  };
+
   const submitModify = (operation) => {
-    const investmentName = InvestmentData["piso"] + InvestmentData["unidad"];
     updateInvestment(uid, investmentName, operation, modifyAmount);
     setcardState("overview");
   };
 
   return (
     <div className="mx-auto border max-w-[28rem] border-primaryLightBlue rounded-b-xl rounded-tr-[1.9rem] shadow-lg shadow-primaryLightBlue w-[100%] overflow-hidden md:block">
-      <div className="px-4 py-3">
-        <h5 className="text-primaryBlue font-bold text-[1.2rem]">
-          Departamento {piso + unidad}
-        </h5>
-        <h6 className="text-[1rem] text-black">Jardin Regazzoni</h6>
+      <div className="px-4 py-3 flex flex-row justify-between items-center">
+        <div className="flex flex-col">
+          <h5 className=" text-primaryBlue font-bold text-[1.2rem]">
+            Departamento {piso + unidad}
+          </h5>
+          <h6 className="text-[1rem] text-black">Jardin Regazzoni</h6>
+        </div>
+        {mode == "admin_card" && <img onClick={() => handleDelete()} src={crossIcon} style={{ width: "40px", height: "40px" }} />}
       </div>
       <p className="bg-primaryBlue text-center text-white py-1 text-[0.84rem]">
         {status}
@@ -67,10 +77,12 @@ export const OportunidadesCard = ({ InvestmentData, userStake, mode, uid }) => {
       </div>
       {mode == "default" && (
         <div className="mx-auto pb-4">
-          {uid && <div className="flex-col bg-primaryBlue text-center font-medium text-white w-full py-[0.4rem]">
-            <div className="text-[0.8rem]">TENENCIA</div>
-            <div className="text-[1.5rem]">{userStake} USD</div>
-          </div>}
+          {userStake && (
+            <div className="flex-col bg-primaryBlue text-center font-medium text-white w-full py-[0.4rem]">
+              <div className="text-[0.8rem]">TENENCIA</div>
+              <div className="text-[1.5rem]">{userStake} USD</div>
+            </div>
+          )}
           <div className="px-4">
             <div className="py-3">
               <div className="flex justify-between items-center">
@@ -149,7 +161,10 @@ export const OportunidadesCard = ({ InvestmentData, userStake, mode, uid }) => {
                   U$S {comprometida} /{" "}
                   <b className="text-primaryBlue">{necesaria}</b>
                 </p>
-                <p>{parseInt((comprometida / necesaria) * 100)}% de financiamiento alcanzado</p>
+                <p>
+                  {parseInt((comprometida / necesaria) * 100)}% de
+                  financiamiento alcanzado
+                </p>
               </div>
             </div>
             <a
@@ -243,7 +258,7 @@ export const OportunidadesCard = ({ InvestmentData, userStake, mode, uid }) => {
                 <div className="bg-primaryLightBlue rounded-full w-full">
                   <div
                     className={`bg-primaryBlue pt-3 rounded-full`}
-                    style={{ width: `${(comprometida / necesaria)* 100}%` }}
+                    style={{ width: `${(comprometida / necesaria) * 100}%` }}
                   ></div>
                 </div>
                 <div className="flex justify-between text-[0.8rem] pt-1">
@@ -251,7 +266,10 @@ export const OportunidadesCard = ({ InvestmentData, userStake, mode, uid }) => {
                     U$S {comprometida} /{" "}
                     <b className="text-primaryBlue">{necesaria}</b>
                   </p>
-                  <p>{parseInt((comprometida / necesaria)* 100) }% de financiamiento alcanzado</p>
+                  <p>
+                    {parseInt((comprometida / necesaria) * 100)}% de
+                    financiamiento alcanzado
+                  </p>
                 </div>
               </div>
               <button

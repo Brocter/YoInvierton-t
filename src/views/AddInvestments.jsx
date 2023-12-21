@@ -155,7 +155,7 @@ const UploadInvestments = () => {
           Cargar Inversión
         </button>
       </div>
-      <div className="w-[50%] border border-black p-10 overflow-scroll">
+      <div className="w-[50%] p-10 overflow-scroll">
       {allInvestments != undefined && Object.values(allInvestments).map((item, index)=> (
         <SimplifiedCard key={index} piso={item.piso} unidad={item.unidad} status={item.status} imgUrl={item.img?.path_}/>
       ))}

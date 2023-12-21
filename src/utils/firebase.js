@@ -6,6 +6,7 @@ import {
   ref as sRef,
   uploadBytes,
   getDownloadURL,
+  deleteObject
 } from "firebase/storage";
 import {
   getDatabase,
@@ -14,6 +15,7 @@ import {
   ref,
   child,
   update,
+  remove,
   off,
   push,
   onValue,
@@ -120,6 +122,40 @@ export const createInvestment = async (formData, id) => {
   return set(child(investmentRef, id), formData);
 };
 
+//Delete Investment from the ivnestment object, and any instance
+//of it within the user investments list.
+
+export const deleteInvestment = async (targetInvestment, imgUrl) => {
+
+  const userRef = ref(db, "users");
+  const investmentRef = ref(db, "investments/regazzoni");
+  //Search for references to the investment in all users and delete them
+
+  const allUsersSnapshot = await get(userRef);
+  const allUsersObj = allUsersSnapshot.val()
+
+  Object.entries(allUsersObj).forEach(([uid, data]) => {
+    let userInvestmentsRef = ref(db, `users/${uid}/investments`);
+    data["investments"] && Object.keys(data["investments"]).forEach((investmentKey) => {
+
+      if (investmentKey == targetInvestment){
+        const deletedUserInvestment = child(userInvestmentsRef, investmentKey)
+        remove(deletedUserInvestment)
+      }
+    });
+  });
+
+  const deletedInvestment = child(investmentRef, targetInvestment)
+  const deletedImg = sRef(storage, imgUrl)
+
+  console.log("IMGGG", deletedImg)
+
+  //Delete investment card
+  deleteObject(deletedImg).then(()=>{
+    remove(deletedInvestment);
+  })
+};
+
 export const addInvestment = async (uid, newInvestment) => {
   try {
 
@@ -168,6 +204,9 @@ export const updateInvestment = async (uid, investment, operation, modifyAmount)
     }else if(operation == "substraction"){
       await updateInvestmentCard(investment, investmentData["comprometida"] - modifyAmount);
       await updateUserInvestment(investment, userInvestmentData - modifyAmount, uid);
+    } else if(operation == "delete"){
+      await updateInvestmentCard(investment, investmentData["comprometida"] - userInvestmentData);
+      await updateUserInvestment(investment, null, uid);
     }
   } catch (error) {
     console.error("Error when updating investments", error);
