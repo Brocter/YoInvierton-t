@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { initializeApp} from "firebase/app";
+import { getAuth, GoogleAuthProvider,EmailAuthProvider, reauthenticateWithCredential, signOut, updatePassword } from "firebase/auth";
 import {
   getStorage,
   ref as sRef,
@@ -34,10 +34,40 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
+export const auth = getAuth(app);
+export const googleProvider = new GoogleAuthProvider();
+export const user = auth.currentUser;
 
 //File Storage Settings
 const storage = getStorage(app);
 const imagesRef = sRef(storage, "images");
+
+export const logout = async () => {
+  localStorage.removeItem("user");
+  return await signOut(auth)
+};
+
+export const changePassword = async (oldPassword, newPassword) => {
+
+  //Generate new user credentials object
+  console.log("USER EMAIL FIREBASE", user.email)
+  const credentials = EmailAuthProvider.credential(user.email, oldPassword);
+  console.log("credentials", credentials);
+
+  try{
+    //Ask Firebase for validation
+    await reauthenticateWithCredential(user, credentials);    ;
+    const response = await updatePassword(user, newPassword)
+
+    return true
+  }
+
+  catch(error){
+    console.log("ERROR DETECTED", error)
+  }
+
+
+}
 
 export const uploadImage = async (file) => {
   //Generates unique ID for the image using the date
@@ -259,5 +289,4 @@ export const getAllUsers = async (callback) => {
   }
 };
 
-export const auth = getAuth(app);
-export const googleProvider = new GoogleAuthProvider();
+

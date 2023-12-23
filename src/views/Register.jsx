@@ -86,7 +86,7 @@ const Register = () => {
         <Step3 handleInputChange={handleInputChange} onSubmit={onSubmit} onPrev={handlePrevious}/>)}
         </div>
         <img className="object-contain w-[100%] lg:hidden" src={background} alt="background" draggable="false"/>
-        <img className="object-contain hidden w-[100%] absolute lg:inline -z-10" src={backgroundDesktop} alt="background" draggable="false"/>
+        <img className="object-contain hidden w-[100%] mt-4 absolute lg:inline -z-10" src={backgroundDesktop} alt="background" draggable="false"/>
         </section>
     )
 }

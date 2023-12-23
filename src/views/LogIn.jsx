@@ -83,7 +83,7 @@ const LogIn = () => {
       </div>
       </div>
       <img className="object-contain w-[100%] lg:hidden" src={background} alt="background" draggable="false"/>
-      <img className="object-contain hidden w-[100%] absolute lg:inline -z-10" src={backgroundDesktop} alt="background" draggable="false"/>
+      <img className="object-contain hidden w-[100%] absolute lg:inline mt-4 -z-10" src={backgroundDesktop} alt="background" draggable="false"/>
     </section>
   );
 };

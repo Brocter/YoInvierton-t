@@ -16,7 +16,7 @@ export const Section2 = () => {
   };
 
   return (
-    <section className='text-center pt-[2rem] pb-[clamp(8rem,15vw,16rem)] lg:pt-[clamp(2rem,25vw,10rem)] xl:pt-[clamp(10rem,18vw,40rem)]'>
+    <section className='text-center pt-[2rem] pb-[clamp(8rem,15vw,16rem)] lg:pt-[2rem] xl:pt-[clamp(10rem,18vw,10rem)]'>
       <ScrollTrigger onEnter={handleScrollEnter} onExit={handleScrollExit}>
         <div className="lg:flex justify-around">
         <div className='pb-2'>

@@ -7,9 +7,9 @@ import announcement from "./../../assets/vox 1.png";
 
 export const Section1 = () => {
   return (
-    <section className="font-barlow text-black relative lg:flex lg:pb-[clamp(4rem,25vw,17rem)] xl:pb-[clamp(13rem,22vw,60rem)] -z-0">
+    <section className="font-barlow text-black relative lg:flex overflow-hidden lg:pb-[clamp(4rem,25vw,17rem)] xl:pb-[clamp(13rem,22vw,60rem)] -z-0">
       <div className="w-[50%]"></div>
-      <div className="mx-auto px-4 text-left justify-left max-w-[32rem] lg:pt-[3rem] lg:ml-0 xl:max-w-[clamp(32rem,34vw,40rem)] xl:pt-[clamp(3rem,4vw,9rem)]">
+      <div className="mt-[6rem] mx-auto px-4 text-left justify-left max-w-[32rem] lg:pt-[3rem] lg:ml-0 xl:max-w-[clamp(32rem,34vw,40rem)] xl:pt-[clamp(3rem,4vw,9rem)]">
         <div className="hidden lg:flex max-h-[2.9rem] gap-2">
           <img className="object-cover" src={announcement} alt="megafono" />
           <div>
@@ -51,7 +51,7 @@ export const Section1 = () => {
         </div>
       </div>
       <img
-        className="object-fit hidden w-[100%] lg:inline lg:absolute z-[-1]"
+        className="object-fit hidden w-[100%] lg:inline lg:absolute z-[-1] mt-[4rem]"
         src={edificioDesktop}
         alt="background"
         draggable="false"

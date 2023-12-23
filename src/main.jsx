@@ -14,7 +14,7 @@ import Landing from "./views/Landing";
 import Home from "./views/Home";
 import Admin from "./views/Admin";
 import UploadInvestments from "./views/AddInvestments";
-
+import ChangePassword from "./views/ChangePassword";
 
 
 
@@ -46,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: "home",
         element: <Home />,
+      },
+      {
+        path: "home/password",
+        element: <ChangePassword />,
       },
       {
         path: "admin",

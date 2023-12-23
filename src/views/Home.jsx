@@ -31,7 +31,7 @@ const Home = () => {
   useEffect(() => {
     //Calculate Portfolio Value
     let portfolioValue = 0
-    userData && Object.keys(userData["investments"]).forEach((investment) => {
+    userData?.investments && Object.keys(userData["investments"]).forEach((investment) => {
       portfolioValue += userData["investments"][investment];
     })
     setPortfolioValue(portfolioValue)
@@ -108,7 +108,7 @@ const Home = () => {
           <Dropdown options={dropdownData} width={8} type={"dropdown"} />
         </div>
         <div id="list" className="grid lg:grid-cols-3 gap-4 xl:grid-cols-4 mt-8">
-        {userData && investmentList && Object.keys(userData["investments"]).map((investment) => (
+        {userData?.investments && investmentList && Object.keys(userData["investments"]).map((investment) => (
           <OportunidadesCard InvestmentData={investmentList[investment]} uid={userData["uid"]} userStake={userData["investments"][investment]} mode="default" />
         ))}
         </div>
