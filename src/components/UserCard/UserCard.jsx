@@ -14,23 +14,22 @@ const UserCard = ({
 }) => {
   const [cardState, setcardState] = useState("closed");
   const [userData, setUserData] = useState(user);
-
-  const [cardData, setcardData] = useState({
-    background,
-    departamento: "Departamento 9°",
-    rendimiento: "8%",
-    minimoInversion: "1.300,00",
-    porcentaje: "15%",
-    totalInvertido: "1000",
-    inversionMax: "50.000",
-    type: "admin_card",
-  });
+  const [portfolioValue, setPortfolioValue] = useState(0);
 
   useEffect(() => {
     if (index != cardSelected) {
       setcardState("closed");
     }
   }, [cardSelected]);
+
+  useEffect(() => {
+    //Calculate Portfolio Value
+    let portfolioValue = 0
+    userData?.investments && Object.keys(userData["investments"]).forEach((investment) => {
+      portfolioValue += userData["investments"][investment];
+    })
+    setPortfolioValue(portfolioValue)
+  }, [userData]);
 
   const handleClick = (e) => {
     handleCardSelected(index);
@@ -58,7 +57,7 @@ const UserCard = ({
           </div>
 
           <div className="mt-2">
-            <p>1000.00 USD</p>
+            <p>{portfolioValue} USD</p>
           </div>
         </div>
         <div>

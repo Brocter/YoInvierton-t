@@ -49,8 +49,12 @@ const Admin = () => {
     setcardSelected(index);
   };
 
-  const filterHandler = () => {
+  const userFilterHandler = (data) => {
     console.log("searching for...")
+  };
+
+  const userSearchHandler = (data) => {
+    console.log("filtering for...", data)
   };
 
   return (
@@ -64,10 +68,10 @@ const Admin = () => {
       <div className="flex flex-row justify-between">
         <div id="filter" className="flex flex-row mt-8">
           <div id="search" className="h-auto">
-            <InputForm height={1.5} placeholder={"Buscar por nombre"} onChange={filterHandler} />
+            <InputForm height={1.5} placeholder={"Buscar por nombre"} onChange={(e) => userSearchHandler(e.target.value)} />
           </div>
           <div id="SortButton" className="ml-4">
-            <Dropdown options={dropdownData} width={8} type={"filter"} />
+            <Dropdown options={dropdownData} width={8} type={"filter"} parameter={"filter"} onChange={(e) => userFilterHandler(e.target.value)} />
           </div>
         </div>
         <div>

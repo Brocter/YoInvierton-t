@@ -66,7 +66,6 @@ export const changePassword = async (oldPassword, newPassword) => {
     console.log("ERROR DETECTED", error)
   }
 
-
 }
 
 export const uploadImage = async (file) => {
@@ -180,10 +179,16 @@ export const deleteInvestment = async (targetInvestment, imgUrl) => {
 
   console.log("IMGGG", deletedImg)
 
-  //Delete investment card
-  deleteObject(deletedImg).then(()=>{
+  deleteObject(deletedImg)
+  .then(() => {
+    // If deletion is successful, remove the investment
     remove(deletedInvestment);
   })
+  .catch((error) => {
+    // If an error occurs during deletion, log the error and still try to remove the investment
+    console.error("Error deleting object:", error);
+    remove(deletedInvestment);
+  });
 };
 
 export const addInvestment = async (uid, newInvestment) => {
