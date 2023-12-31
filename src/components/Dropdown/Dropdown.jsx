@@ -39,8 +39,8 @@ const Dropdown = (props) => {
         className={`shadow appearance-none border rounded-md w-full py-1.5 border-${config.border} bg-${config.bg} text-${config.color} leading-tight focus:outline-none focus:shadow-outline p-2 pl-3 text-gray-500`}
         onChange={(e)=>props.onChange(e.target.value, props.parameter)}
       >
-        {props.options.length > 0 && props.options.map((option) => (
-          <option value={option.value}>{option.text}</option>
+        {props.options.length > 0 && props.options.map((option, key) => (
+          <option value={option} key={key}>{option}</option>
         ))}
       </select>
       <div className="ml-[-1.8rem] mt-[0.2rem]">

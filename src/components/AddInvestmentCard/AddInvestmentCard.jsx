@@ -6,7 +6,7 @@ import {addInvestment} from "../../utils/firebase"
 export const AddInvestmentCard = ({allInvestments, uid}) => {
   const [cardState, setcardState] = useState(false);
   const [dropdownList, setDropdownList] = useState([])
-  const [newInvestment, setNewInvestment] = useState({investment: dropdownList[0]?.value, project: "Jardin Regazzoni"});
+  const [newInvestment, setNewInvestment] = useState({investment: dropdownList[0], project: "Jardin Regazzoni"});
 
   const handleCardState = () => {
     if (cardState == false) {
@@ -19,7 +19,7 @@ export const AddInvestmentCard = ({allInvestments, uid}) => {
   useEffect(()=> {
     setNewInvestment((prevData) => ({
       ...prevData, 
-      investment: dropdownList[0]?.value
+      investment: dropdownList[0]
     }));
   },[dropdownList])
 
@@ -34,10 +34,7 @@ export const AddInvestmentCard = ({allInvestments, uid}) => {
     let dropdownArr = []
     allInvestments && Object.values(allInvestments).forEach((investment)=> {
       const name = investment.piso + investment.unidad
-      dropdownArr.push({
-        value: name,
-        text: name
-      })
+      dropdownArr.push(name)
       })
       console.log("dropdownArr", dropdownArr);
       setDropdownList(dropdownArr)

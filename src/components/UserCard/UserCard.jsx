@@ -5,31 +5,15 @@ import background from "../../assets/edificioBackground.png";
 import { OportunidadesCard } from "../OportunidadesCard/OportunidadesCard";
 
 const UserCard = ({
-  handleCardSelected,
-  user,
-  index,
-  cardSelected,
-  allInvestments,
-  uid,
-}) => {
+  handleCardSelected,user,index,cardSelected,allInvestments,uid,}) => {
   const [cardState, setcardState] = useState("closed");
   const [userData, setUserData] = useState(user);
-  const [portfolioValue, setPortfolioValue] = useState(0);
 
   useEffect(() => {
     if (index != cardSelected) {
       setcardState("closed");
     }
   }, [cardSelected]);
-
-  useEffect(() => {
-    //Calculate Portfolio Value
-    let portfolioValue = 0
-    userData?.investments && Object.keys(userData["investments"]).forEach((investment) => {
-      portfolioValue += userData["investments"][investment];
-    })
-    setPortfolioValue(portfolioValue)
-  }, [userData]);
 
   const handleClick = (e) => {
     handleCardSelected(index);
@@ -51,13 +35,13 @@ const UserCard = ({
         <div>
           <div>
             <p className="text-[1.3rem] text-primaryBlue font-bold">
-              {userData.fullName?.name + " " + userData.fullName?.surname}
+              {userData?.fullName}
             </p>
             <p>DNI: {userData["DNI"]}</p>
           </div>
 
           <div className="mt-2">
-            <p>{portfolioValue} USD</p>
+            <p>{userData["portfolioValue"]} USD</p>
           </div>
         </div>
         <div>

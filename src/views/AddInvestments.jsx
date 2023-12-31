@@ -63,23 +63,10 @@ const UploadInvestments = () => {
     });
   };
 
-  const dropdownDataType = [
-    {
-      value: "1 AMBIENTE",
-      text: "1 AMBIENTE",
-    },
-    {
-      value: "2 AMBIENTE",
-      text: "2 AMBIENTE",
-    },
-  ];
+  const dropdownDataType = ["1 AMBIENTE", "2 AMBIENTE"]
+  
 
-  const dropdownDataStatus = [
-    {
-      value: "En Obra, Entrega Febrero",
-      text: "En Obra, Entrega Febrero",
-    },
-  ];
+  const dropdownDataStatus = ["En Obra, Entrega Febrero"]
 
   return (
     <section id="main" className="flex flex-row p-8  h-[100vh] w-full">
@@ -101,7 +88,7 @@ const UploadInvestments = () => {
         <div className="mt-4">
           <Dropdown
             options={dropdownDataType}
-            handleInputChange={handleInputChange}
+            onChange={handleInputChange}
             parameter={"type"}
           />
         </div>
