@@ -200,8 +200,8 @@ export const addInvestment = async (uid, newInvestment) => {
 
     //Get references to DB
     const allInvestmentRef = ref(db, "investments/regazzoni");
-    const investmentCardRef = ref(child(allInvestmentRef, newInvestment.investment));
-    // const investorsRef = ref(child(investmentCardRef, "investors"));
+    const investmentCardRef = child(allInvestmentRef, newInvestment.investment);
+    const investorsRef = child(investmentCardRef, "inversores");
 
     const userInvestmentsRef = ref(db, "users/" + uid + "/investments");
     
@@ -218,7 +218,7 @@ export const addInvestment = async (uid, newInvestment) => {
     updateInvestmentCard(newInvestment.investment, investmentData["comprometida"] + newInvestment.investmentAmount);
 
     //Add uid to investors list
-    // set(child(investorsRef, uid), newInvestment.investmentAmount)
+    set(child(investorsRef, uid), newInvestment.investmentAmount)
 
   } catch (error) {
     console.error("Error in addInvestment:", error);
@@ -242,13 +242,13 @@ export const updateInvestment = async (uid, investment, operation, modifyAmount)
 
 
     if (operation == "sum"){
-      await updateInvestmentCard(investment, investmentData["comprometida"] + modifyAmount);
+      await updateInvestmentCard(investment, investmentData["comprometida"] + modifyAmount, uid, "sum" );
       await updateUserInvestment(investment, userInvestmentData + modifyAmount, uid);
     }else if(operation == "substraction"){
-      await updateInvestmentCard(investment, investmentData["comprometida"] - modifyAmount);
+      await updateInvestmentCard(investment, investmentData["comprometida"] - modifyAmount, uid, "sub");
       await updateUserInvestment(investment, userInvestmentData - modifyAmount, uid);
     } else if(operation == "delete"){
-      await updateInvestmentCard(investment, investmentData["comprometida"] - userInvestmentData);
+      await updateInvestmentCard(investment, investmentData["comprometida"] - userInvestmentData, uid, "del");
       await updateUserInvestment(investment, null, uid);
     }
   } catch (error) {
@@ -257,12 +257,20 @@ export const updateInvestment = async (uid, investment, operation, modifyAmount)
   }
 };
 
-export const updateInvestmentCard = async (investment, updatedValue) => {
+export const updateInvestmentCard = async (investment, updatedValue, uid, type) => {
   console.log("value to modify", investment)
 
   const investmentCardRef = ref(db, "investments/regazzoni");
+  const investorsRef = child(investmentCardRef, `${investment}/inversores`);
+
   const updatedInvestmentCardValue = {comprometida: updatedValue};
+
   await update(child(investmentCardRef, investment), updatedInvestmentCardValue);
+
+  if(type == "del"){
+    console.log("NULLLLLL")
+    await set(child(investorsRef, uid), null);
+  }
 }
 
 export const updateUserInvestment = async (investment, updatedValue, uid) => {
