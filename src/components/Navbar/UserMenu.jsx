@@ -26,15 +26,15 @@ export function UserMenu({userName, userHandler}){
                 <div className="font-medium">{userName["name"] + " " + userName["surname"]}</div>
             </div>
             {displayDropdown && <motion.div initial={{opacity: 0}} animate={{opacity: 100 }} onMouseLeave={()=>setDisplayDropdown(!displayDropdown)} id="dropdown" className="flex flex-col justify-center mt-2 gap-2 shadow-lg shadow-primaryLightBlue border border-gray-200 rounded-b-md font-medium relative w-full top-[-28%] h-[12rem] z-[10] background-primaryBlue">
-                <div className="flex border-b items-center justify-start border-gray-200 pl-3 h-[4rem] pt-2 p-2 hover:text-primaryBlue">
+                <div className="flex border-b bg-white items-center justify-start border-gray-200 pl-3 h-[4rem] pt-2 p-2 hover:text-primaryBlue">
                     <img src={portfolio} width="40px" className="mr-[0.7rem]"/>
                     <Link to={"/home"}><div>Portfolio</div></Link>
                 </div>
-                <div className="flex border-b items-center justify-start border-gray-200 pl-4 p-2  h-[4rem]  hover:text-primaryBlue">
+                <div className="flex border-b bg-white items-center justify-start border-gray-200 pl-4 p-2  h-[4rem]  hover:text-primaryBlue">
                     <img src={password} style={{ width: '30px', height: '30px' }} className="mr-[1rem]"/>
                     <Link to={"/home/password"}><div>Cambiar Contraseña</div></Link>
                 </div>
-                <div onClick={() => handleLogout()} className="flex border-b items-center justify-start border-gray-200 pl-[1rem]  h-[4rem] p-2 pb-3 hover:text-primaryBlue">
+                <div onClick={() => handleLogout()} className="flex bg-white border-b items-center justify-start border-gray-200 pl-[1rem]  h-[4rem] p-2 pb-3 hover:text-primaryBlue">
                     <img src={signout} style={{ width: '30px', height: '30px' }} className="mr-[1rem]"/>
                     <div>Cerrar Sesión</div>
                 </div>

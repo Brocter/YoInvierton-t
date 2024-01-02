@@ -105,11 +105,15 @@ export const retrieveInvestments = async (callback, top) => {
     if (snapshot.exists()) {
       let  investment = Object.values(snapshot.val());
 
-      //Filter Properties
+      //Sort the list in ascending order
       investment.sort((investmentA, investmentB)=> {
         return investmentB["comprometida"] - investmentA["comprometida"]
       })
 
+      //Delete those that are at 100%
+      investment = investment.filter(item => item["comprometida"] < item["necesaria"]);
+
+      //Get the top 3 investments
       const topArr = investment.slice(0, 3)
 
       return topArr;
@@ -195,22 +199,26 @@ export const addInvestment = async (uid, newInvestment) => {
   try {
 
     //Get references to DB
-    const investmentCardRef = ref(db, "investments/regazzoni");
-    const userInvestmentsRef = ref(db, "users/" + uid + "/investments");
+    const allInvestmentRef = ref(db, "investments/regazzoni");
+    const investmentCardRef = ref(child(allInvestmentRef, newInvestment.investment));
+    // const investorsRef = ref(child(investmentCardRef, "investors"));
 
+    const userInvestmentsRef = ref(db, "users/" + uid + "/investments");
+    
     //Retrieve Total Invested in Property
-    const investmentSnapshot = await get(child(investmentCardRef, newInvestment.investment));
+    const investmentSnapshot = await get(investmentCardRef);
     const investmentData = investmentSnapshot.val()
 
-    console.log("investmentDatainvestmentData", investmentData)
-
-    //Create investment in Database
+    //Create investment in user DB Object
     await set(child(userInvestmentsRef, newInvestment.investment), newInvestment.investmentAmount);
 
-    console.log("AHHHHHHHHHHHHHHHHHHHHHHHHHHHH",  investmentData["comprometida"], newInvestment.investmentAmount)
+    console.log("AHHHHHHHHHHHHHHHHHHHHHHHHHHHH",  investmentData["comprometida"], newInvestment.investmentAmount);
 
     //Update Compromised Invesment in Card
     updateInvestmentCard(newInvestment.investment, investmentData["comprometida"] + newInvestment.investmentAmount);
+
+    //Add uid to investors list
+    // set(child(investorsRef, uid), newInvestment.investmentAmount)
 
   } catch (error) {
     console.error("Error in addInvestment:", error);

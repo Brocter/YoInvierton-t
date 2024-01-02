@@ -12,7 +12,7 @@ import { retrieveInvestments } from "../utils/firebase";
 
 const Landing = () => {
 
-  const [topInvestments, setTopInvestments] = useState();
+  const [topInvestments, setTopInvestments] = useState([]);
 
   useEffect(() => {
     retrieveInvestments(undefined,true).then((data)=>{
@@ -25,7 +25,7 @@ const Landing = () => {
       <Section1/>
       <Section2/>
       <Section3/>
-      {topInvestments && <Section4 topInvestments={topInvestments}/>}
+      <Section4 topInvestments={topInvestments}/>
       <Section5/>
       <Section6/>
       <Footer/>

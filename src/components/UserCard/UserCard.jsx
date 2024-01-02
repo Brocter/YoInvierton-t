@@ -1,11 +1,9 @@
 import arrowDown from "../../assets/icons/arrow_down.png";
 import React, { useState, useEffect } from "react";
 import { AddInvestmentCard } from "../AddInvestmentCard/AddInvestmentCard";
-import background from "../../assets/edificioBackground.png";
 import { OportunidadesCard } from "../OportunidadesCard/OportunidadesCard";
 
-const UserCard = ({
-  handleCardSelected,user,index,cardSelected,allInvestments,uid,}) => {
+const UserCard = ({handleCardSelected,user,index,cardSelected,allInvestments,uid}) => {
   const [cardState, setcardState] = useState("closed");
   const [userData, setUserData] = useState(user);
 
@@ -59,7 +57,7 @@ const UserCard = ({
           id="list"
           className="grid md:grid-cols-2 lg:grid-cols-3 w-[100%] xl:grid-cols-4 p-8 gap-4 content-center"
         >
-          <AddInvestmentCard allInvestments={allInvestments} uid={uid} />
+          <AddInvestmentCard allInvestments={allInvestments} uid={uid} userData={user} />
 
           {user["investments"] && Object.keys(user["investments"]).map((key) => (
             <OportunidadesCard
