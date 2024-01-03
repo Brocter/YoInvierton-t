@@ -37,13 +37,7 @@ const Home = () => {
     setPortfolioValue(portfolioValue)
   }, [userData]);
 
-  const dropdownData = [
-    {
-      value: "Jardin_Regazzoni",
-      text: "Jardin Regazzoni",
-    },
-  ];
-
+  const dropdownData = ["Jardin Regazzoni"];
 
   return (
     
