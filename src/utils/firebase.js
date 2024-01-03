@@ -240,15 +240,24 @@ export const updateInvestment = async (uid, investment, operation, modifyAmount)
     const userInvestmentSnapshot = await get(child(userInvestmentsRef, investment));
     const userInvestmentData = userInvestmentSnapshot.val()
 
-
     if (operation == "sum"){
-      await updateInvestmentCard(investment, investmentData["comprometida"] + modifyAmount, uid, "sum" );
-      await updateUserInvestment(investment, userInvestmentData + modifyAmount, uid);
+      const newTotalInvestment = investmentData["comprometida"] + modifyAmount
+      const newUserTotal = userInvestmentData + modifyAmount
+      await updateInvestmentCard(investment, newTotalInvestment , uid, newUserTotal);
+      await updateUserInvestment(investment, newUserTotal , uid);
+
     }else if(operation == "substraction"){
-      await updateInvestmentCard(investment, investmentData["comprometida"] - modifyAmount, uid, "sub");
-      await updateUserInvestment(investment, userInvestmentData - modifyAmount, uid);
+      const newTotalInvestment = investmentData["comprometida"] - modifyAmount
+      const newUserTotal = userInvestmentData - modifyAmount
+      await updateInvestmentCard(investment, newTotalInvestment, uid, newUserTotal);
+      await updateUserInvestment(investment, newUserTotal, uid);
+
     } else if(operation == "delete"){
-      await updateInvestmentCard(investment, investmentData["comprometida"] - userInvestmentData, uid, "del");
+      const newTotalInvestment = investmentData["comprometida"] - userInvestmentData
+      const newUserTotal = userInvestmentData - modifyAmount
+
+      console.log("newTotalInvestment", modifyAmount)
+      await updateInvestmentCard(investment, newTotalInvestment, uid, null);
       await updateUserInvestment(investment, null, uid);
     }
   } catch (error) {
@@ -257,7 +266,7 @@ export const updateInvestment = async (uid, investment, operation, modifyAmount)
   }
 };
 
-export const updateInvestmentCard = async (investment, updatedValue, uid, type) => {
+export const updateInvestmentCard = async (investment, updatedValue, uid, newUserTotal) => {
   console.log("value to modify", investment)
 
   const investmentCardRef = ref(db, "investments/regazzoni");
@@ -266,11 +275,7 @@ export const updateInvestmentCard = async (investment, updatedValue, uid, type) 
   const updatedInvestmentCardValue = {comprometida: updatedValue};
 
   await update(child(investmentCardRef, investment), updatedInvestmentCardValue);
-
-  if(type == "del"){
-    console.log("NULLLLLL")
-    await set(child(investorsRef, uid), null);
-  }
+  await set(child(investorsRef, uid), newUserTotal);
 }
 
 export const updateUserInvestment = async (investment, updatedValue, uid) => {
