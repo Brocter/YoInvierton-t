@@ -78,7 +78,15 @@ export const uploadImage = async (file) => {
   //Uploads the File
   return await uploadBytes(imageRef, file).then((snapshot) => {
     console.log("snapshotsnapshot", snapshot);
-    return snapshot["ref"]["_location"];
+    return getDownloadURL(sRef(storage, snapshot))
+    .then((url) => {
+      // `url` is the download URL for 'images/stars.jpg'
+      return url;
+    })
+    .catch((error) => {
+      // Handle any errors
+      console.log("Error retrieving the image");
+    });
   });
 };
 
@@ -240,21 +248,28 @@ export const updateInvestment = async (uid, investment, operation, modifyAmount)
     const userInvestmentSnapshot = await get(child(userInvestmentsRef, investment));
     const userInvestmentData = userInvestmentSnapshot.val()
 
+    //Iterate over all investors and calculate total
+    let totalInvested = 0
+
+    Object.values(investmentData["inversores"]).forEach((investmentAmount)=> {
+      totalInvested += investmentAmount
+    })
+    
+
     if (operation == "sum"){
-      const newTotalInvestment = investmentData["comprometida"] + modifyAmount
+      const newTotalInvestment = totalInvested + modifyAmount
       const newUserTotal = userInvestmentData + modifyAmount
       await updateInvestmentCard(investment, newTotalInvestment , uid, newUserTotal);
       await updateUserInvestment(investment, newUserTotal , uid);
 
     }else if(operation == "substraction"){
-      const newTotalInvestment = investmentData["comprometida"] - modifyAmount
+      const newTotalInvestment = totalInvested - modifyAmount
       const newUserTotal = userInvestmentData - modifyAmount
       await updateInvestmentCard(investment, newTotalInvestment, uid, newUserTotal);
       await updateUserInvestment(investment, newUserTotal, uid);
 
     } else if(operation == "delete"){
-      const newTotalInvestment = investmentData["comprometida"] - userInvestmentData
-      const newUserTotal = userInvestmentData - modifyAmount
+      const newTotalInvestment = totalInvested - userInvestmentData
 
       console.log("newTotalInvestment", modifyAmount)
       await updateInvestmentCard(investment, newTotalInvestment, uid, null);

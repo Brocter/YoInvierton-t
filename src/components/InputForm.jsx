@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 const InputForm = (props) => {
-  let { title, placeholder, name, onChange, type, height } = props;
+  let { title, placeholder, name, onChange, type, height, value } = props;
 
   return (
     <div className="w-full">
@@ -12,6 +12,7 @@ const InputForm = (props) => {
         name={name}
         onChange={(e) => onChange(e)}
         placeholder={placeholder}
+        value={value}
       />
     </div>
   );

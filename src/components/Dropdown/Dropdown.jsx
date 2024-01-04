@@ -36,6 +36,7 @@ const Dropdown = (props) => {
       <select
         name="investment"
         id="investment"
+        value={props.selected}
         className={`shadow appearance-none border rounded-md w-full py-1.5 border-${config.border} bg-${config.bg} text-${config.color} leading-tight focus:outline-none focus:shadow-outline p-2 pl-3 text-gray-500`}
         onChange={(e)=>props.onChange(e.target.value, props.parameter)}
       >
