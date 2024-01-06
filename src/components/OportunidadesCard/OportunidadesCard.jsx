@@ -25,10 +25,7 @@ export const OportunidadesCard = ({ InvestmentData, userStake, mode, uid }) => {
     console.log("GENERATEEED", InvestmentData);
     console.log("userStake", userStake);
     setInvestmentName(InvestmentData["piso"] + InvestmentData["unidad"]);
-    retrieveImage(img?.path_).then((url) => {
-      console.log("download url", url);
-      setImage(url);
-    });
+    setImage(img);
   }, [InvestmentData]);
 
   const handleCardState = () => {

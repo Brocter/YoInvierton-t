@@ -69,25 +69,30 @@ export const changePassword = async (oldPassword, newPassword) => {
 }
 
 export const uploadImage = async (file) => {
-  //Generates unique ID for the image using the date
-  const uniqueId = Date.now().toString();
+  try {
+    // Generates unique ID for the image using the date
+    const uniqueId = Date.now().toString();
 
-  //Creates path within storage
-  const imageRef = sRef(imagesRef, uniqueId);
+    // Creates path within storage with the unique ID included in the reference
+    const imageRef = sRef(storage, 'images/' + uniqueId); // Ensure that storage is correctly defined
 
-  //Uploads the File
-  return await uploadBytes(imageRef, file).then((snapshot) => {
-    console.log("snapshotsnapshot", snapshot);
-    return getDownloadURL(sRef(storage, snapshot))
-    .then((url) => {
-      // `url` is the download URL for 'images/stars.jpg'
-      return url;
-    })
-    .catch((error) => {
-      // Handle any errors
-      console.log("Error retrieving the image");
-    });
-  });
+    console.log("IMAGE REFFF X3", imageRef)
+    console.log("fileeeeeeeeeee X3", file)
+
+    // Uploads the File
+    await uploadBytes(imageRef, file);
+
+    // Get the download URL for the uploaded image
+    const downloadUrl = await getDownloadURL(imageRef); // Use imageRef here
+
+    console.log('IMG UPLOADED DATA', downloadUrl);
+
+    return downloadUrl;
+  } catch (error) {
+    // Handle any potential errors during upload or getting the URL
+    console.error('Error uploading image:', error);
+    throw error; // Propagate the error or handle it accordingly
+  }
 };
 
 export const retrieveImage = async (url) => {
