@@ -35,19 +35,20 @@ const UploadInvestments = () => {
       setInvestmentData({
         piso: "",
         unidad:"",
-        minima: 0,
-        necesaria: 0,
-        m2Totales:0,
-        comprometida: 0,
+        minima: undefined,
+        necesaria: undefined,
+        m2Totales:undefined,
+        comprometida: undefined,
         type: "1 AMB",
         status: "En Obra, Entrega Febrero",
         estimatedProfit: "10%",
+        montoVenta: undefined,
       });
     }
   }, [selectedCard]);
 
   const handleInputChange = (data, field) => {
-    console.log("IMG", investmentImg);
+    console.log("dataaa", investmentImg);
     if (field == "file") {
       const file = data.target.files[0];
       setInvestmentImg(file); // Set the image URL directly
@@ -89,7 +90,7 @@ const UploadInvestments = () => {
 
   const dropdownDataType = ["1 AMBIENTE", "2 AMBIENTE"];
 
-  const dropdownDataStatus = ["En Obra, Entrega Febrero"];
+  const dropdownDataStatus = ["En Obra, Entrega Febrero", "¡Unidad Vendida!"];
 
   return (
     <section id="main" className="flex flex-row p-8  h-[100vh] w-full">
@@ -123,7 +124,7 @@ const UploadInvestments = () => {
         <div className="mt-4">
           <Dropdown
             options={dropdownDataType}
-            onChange={handleInputChange}
+            onChange={(e) => handleInputChange(e, "type")}
             parameter={"type"}
             selected={investmentData?.["type"]}
           />
@@ -133,7 +134,7 @@ const UploadInvestments = () => {
             height={"1.5"}
             placeholder={"M2 Totales"}
             onChange={(e) =>
-              handleInputChange(parseInt(e.target.value), "m2Totales")
+            handleInputChange(parseInt(e.target.value), "m2Totales")
             }
             value={investmentData?.["m2Totales"]}
           />
@@ -141,10 +142,27 @@ const UploadInvestments = () => {
         <div className="mt-4">
           <Dropdown
             options={dropdownDataStatus}
-            onChange={handleInputChange}
+            onChange={(e) => handleInputChange(e, "status")}
             parameter={"status"}
-            selected={investmentData?.["type"]}
+            selected={investmentData?.["status"]}
           />
+            {investmentData?.["status"] == "¡Unidad Vendida!" && 
+            <div>
+              <p>Atención: Una vez guardado este cambio es irreversible</p>
+              <InputForm
+              height={"1.5"}
+              placeholder={"Monto de venta"}
+              onChange={(e) => {
+                handleInputChange(parseInt(e.target.value), "montoVenta");
+                setInvestmentData((prevData) => ({
+                  ...prevData,
+                  ["montoVenta"]: undefined,
+                }));
+              }}              
+              value={investmentData?.["montoVenta"]}
+          />
+
+            </div>}
         </div>
         <div className="mt-4">
           <InputForm

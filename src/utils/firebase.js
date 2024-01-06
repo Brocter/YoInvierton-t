@@ -140,6 +140,10 @@ export const retrieveInvestments = async (callback, top) => {
       callback(data); // Assuming postElement is defined somewhere else
     });
   }
+};
+
+export const calculateProfit = async (investmentName, montoVenta) => {
+ //Iterate over all users who invested and update their profit property
  
 };
 
@@ -164,8 +168,16 @@ export const createUser = async (formData, uid) => {
 
 //Creates user entry in RealTime Database
 export const createInvestment = async (formData, id) => {
+  
   const investmentRef = ref(db, "investments/regazzoni");
-  return set(child(investmentRef, id), formData);
+  const newInvestment = await set(child(investmentRef, id), formData);
+
+  //Calculate profit if the property was sold
+  if (formData["montoVenta"] != undefined || formData["montoVenta"] > 0){
+    await calculateProfit(formData["piso"] + formData["unidad"], formData["montoVenta"])
+  }
+
+  return newInvestment
 };
 
 //Delete Investment from the ivnestment object, and any instance
