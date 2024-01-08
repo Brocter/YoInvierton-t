@@ -144,6 +144,7 @@ export const retrieveInvestments = async (callback, top) => {
 
 export const calculateProfit = async (investmentName, montoVenta) => {
  //Iterate over all users who invested and update their profit property
+
  
 };
 
@@ -179,6 +180,10 @@ export const createInvestment = async (formData, id) => {
 
   return newInvestment
 };
+
+export const getInvestment = async () => {
+  
+}
 
 //Delete Investment from the ivnestment object, and any instance
 //of it within the user investments list.

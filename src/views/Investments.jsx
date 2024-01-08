@@ -64,10 +64,7 @@ const Investments = () => {
                 Jardin Regazzoni
               </h2>
               <p className="mt-[1rem]">
-                Lorem ipsum dolor sit amet consectetur. Feugiat tempor enim erat
-                a non fames risus. Lorem ipsum dolor sit amet consectetur. Lorem
-                ipsum dolor sit amet consectetur. Feugiat tempor enim erat a non
-                fames risus. Lorem ipsum dolor.
+              Ubicado en el centro de Santiago del Estero,Este edificio de más de 10.000m² te acerca a todo. Jardín Regazzoni ofrece diseños modernos con excelente iluminación y funcionalidad. Los residentes podrán disfrutar de una piscina, SUM, solárium, parrillas y cocinas de uso común, Invertí en un proyecto de elegancia y confort, en una de las provincias con mayor crecimiento
               </p>
             </div>
           </div>
