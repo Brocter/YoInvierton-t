@@ -142,12 +142,6 @@ export const retrieveInvestments = async (callback, top) => {
   }
 };
 
-export const calculateProfit = async (investmentName, montoVenta) => {
- //Iterate over all users who invested and update their profit property
-
- 
-};
-
 //Creates user entry in RealTime Database
 export const createUser = async (formData, uid) => {
   const userRef = ref(db, "users");
@@ -173,17 +167,47 @@ export const createInvestment = async (formData, id) => {
   const investmentRef = ref(db, "investments/regazzoni");
   const newInvestment = await set(child(investmentRef, id), formData);
 
-  //Calculate profit if the property was sold
-  if (formData["montoVenta"] != undefined || formData["montoVenta"] > 0){
-    await calculateProfit(formData["piso"] + formData["unidad"], formData["montoVenta"])
+  //If property is marked as sold calculate profit
+  if (formData["montoVenta"] != undefined && formData["montoVenta"] > 0 && Object.keys(formData["inversores"]).length > 0){
+    await calculateProfit(formData["piso"] + formData["unidad"])
   }
 
   return newInvestment
 };
 
-export const getInvestment = async () => {
-  
+export const calculateProfit = async (propertyName) => {
+  //Get single investment data and iterate over all users who invested to update their profit
+
+  const targetProperty = await getProperty(propertyName)
+  const allUsers = await getAllUsers();
+
+  Object.keys(targetProperty["inversores"]).forEach((uid) => {
+
+    //Caculate profit percentage
+    profitPrc = targetProperty["necesaria"] / targetProperty["montoVenta"]
+
+    //Calculate user profit from percentage
+    
+
+    updateUser(uid, "ganancia", profit)
+    //Retrieve user and update 
+  })
+};
+
+export const getProperty = async (propertyName) => {
+  const propertyRef = ref(db, "investments/regazzoni");
+  const propertySnapshot = await get(child(propertyRef, propertyName));
+  return propertySnapshot.val();
 }
+
+//updateUser: Change user fields other than email or password.
+export const updateUser = async (uid, field, updatedValue) => {
+  const userRef = ref(db, "users");
+
+  //Update user property in DB
+  const changedUserProp = {[field]: updatedValue};
+  await update(child(userRef, uid), changedUserProp);
+};
 
 //Delete Investment from the ivnestment object, and any instance
 //of it within the user investments list.
@@ -200,7 +224,6 @@ export const deleteInvestment = async (targetInvestment, imgUrl) => {
   Object.entries(allUsersObj).forEach(([uid, data]) => {
     let userInvestmentsRef = ref(db, `users/${uid}/investments`);
     data["investments"] && Object.keys(data["investments"]).forEach((investmentKey) => {
-
       if (investmentKey == targetInvestment){
         const deletedUserInvestment = child(userInvestmentsRef, investmentKey)
         remove(deletedUserInvestment)
